@@ -724,9 +724,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.007992927, y: -0.14}
+  m_Offset: {x: 0.007992927, y: -0.13302043}
   serializedVersion: 2
-  m_Radius: 0.17757563
+  m_Radius: 0.17059608
 --- !u!61 &732628564
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -766,7 +766,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Controller: {fileID: 732628561}
-  m_RunSpeed: 20
+  m_WalkSpeed: 15
+  m_RunSpeed: 30
+  m_CurrentSpeed: 0
   m_Animator: {fileID: 732628566}
 --- !u!95 &732628566
 Animator:
