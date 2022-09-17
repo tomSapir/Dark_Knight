@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private static readonly string sr_AnimatorRollingParameterName = "IsRolling";
     private static readonly string sr_AnimatorCrouchingParameterName = "IsCrouching";
     private static readonly string sr_AnimatorWalkingParameterName = "IsWalking";
     private static readonly string sr_AnimatorRunningParameterName = "IsRunning";
@@ -11,17 +12,24 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController2D m_Controller;
 
-    public float m_RunSpeed = 20f;
+    public float m_WalkSpeed = 15f;
+    public float m_RunSpeed = 25f;
+    public float m_CurrentSpeed;
     private float m_HorizontalMove = 0f;
-    private bool  m_Jump = false;
-    private bool  m_Crouch = false;
+    private bool m_Jump = false;
+    private bool m_Crouch = false;
 
     public Animator m_Animator;
 
+    void Start()
+    {
+        m_CurrentSpeed = m_WalkSpeed;
+    }
+
     void Update()
     {
-        m_HorizontalMove = Input.GetAxisRaw("Horizontal") * m_RunSpeed;
-        m_Animator.SetFloat("Speed", Mathf.Abs(m_HorizontalMove));
+        setCurrentSpeed();
+        m_HorizontalMove = Input.GetAxisRaw("Horizontal") * m_CurrentSpeed;
 
         checkIfWalking();
         checkIfRunning();
@@ -33,6 +41,18 @@ public class PlayerMovement : MonoBehaviour
     {
         m_Controller.Move(m_HorizontalMove * Time.deltaTime, m_Crouch, m_Jump);
         m_Jump = false;
+    }
+
+    private void setCurrentSpeed()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            m_CurrentSpeed = m_RunSpeed;
+        }
+        else
+        {
+            m_CurrentSpeed = m_WalkSpeed;
+        }
     }
 
     private void checkIfWalking()
@@ -49,11 +69,11 @@ public class PlayerMovement : MonoBehaviour
         m_Animator.SetBool(sr_AnimatorRunningParameterName, isRunning);
         if (isRunning)
         {
-            m_RunSpeed = 40f;
+            m_WalkSpeed = 40f;
         }
         else
         {
-            m_RunSpeed = 20f;
+            m_WalkSpeed = 20f;
         }
     }
 
@@ -61,6 +81,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
+            if(m_Animator.GetBool(sr_AnimatorRunningParameterName))
+            {
+                m_WalkSpeed = 40f;
+            }
+
             m_Jump = true;
             m_Animator.SetBool(sr_AnimatorJumpingParameterName, true);
         }
@@ -80,6 +105,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnPlayerLanding()
     {
+        if(m_Animator.GetBool(sr_AnimatorJumpingParameterName))
+            Debug.Break();
+
         m_Animator.SetBool(sr_AnimatorJumpingParameterName, false);
     }
 
