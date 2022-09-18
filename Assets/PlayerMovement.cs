@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private static readonly string sr_AnimatorRollingParameterName = "IsRolling";
-    private static readonly string sr_AnimatorCrouchingParameterName = "IsCrouching";
-    private static readonly string sr_AnimatorWalkingParameterName = "IsWalking";
-    private static readonly string sr_AnimatorRunningParameterName = "IsRunning";
-    private static readonly string sr_AnimatorJumpingParameterName = "IsJumping";
+    public static readonly string sr_AnimatorCrouchingParameterName = "IsCrouching";
+    public static readonly string sr_AnimatorWalkingParameterName = "IsWalking";
+    public static readonly string sr_AnimatorRunningParameterName = "IsRunning";
+    public static readonly string sr_AnimatorJumpingParameterName = "IsJumping";
 
     public CharacterController2D m_Controller;
 
@@ -17,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float m_CurrentSpeed;
     private float m_HorizontalMove = 0f;
     private bool m_Jump = false;
-    private bool m_Crouch = false;
+    public bool Crouch { get; set; } = false;
 
     public Animator m_Animator;
 
@@ -39,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        m_Controller.Move(m_HorizontalMove * Time.deltaTime, m_Crouch, m_Jump);
+        m_Controller.Move(m_HorizontalMove * Time.deltaTime, Crouch, m_Jump);
         m_Jump = false;
     }
 
@@ -95,19 +92,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Crouch"))
         {
-            m_Crouch = true;
+            Crouch = true;
         }
         else if (Input.GetButtonUp("Crouch"))
         {
-            m_Crouch = false;
+            Crouch = false;
         }
     }
 
     public void OnPlayerLanding()
     {
-        if(m_Animator.GetBool(sr_AnimatorJumpingParameterName))
-            Debug.Break();
-
         m_Animator.SetBool(sr_AnimatorJumpingParameterName, false);
     }
 
