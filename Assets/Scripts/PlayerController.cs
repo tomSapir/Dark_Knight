@@ -1,27 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody2D m_RigidBody;
+    [SerializeField] private Rigidbody2D m_RigidBody;
 
-    public float m_MoveSpeed = 8f;
-    public float m_JumpForce = 20f;
+    [SerializeField] private float m_MoveSpeed = 8f;
+    [SerializeField] private float m_JumpForce = 20f;
 
-    public Transform m_GroundCheckPoint;
+    [SerializeField] private Transform m_GroundCheckPoint;
+    [SerializeField] private LayerMask m_WhatIsGround;
     private bool m_IsOnGround;
-    public LayerMask m_WhatIsGround;
 
-    public Animator m_Animator;
+    [SerializeField] private Animator m_Animator;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool m_CanDoubleJump;
 
-    // Update is called once per frame
     void Update()
     {
         handleSpeed();
@@ -30,6 +23,7 @@ public class PlayerController : MonoBehaviour
         checkIfOnTheGround();
         handleJumping();
         updateAnimationsParameters();
+        updateCanDoubleJump();
     }
 
     private void handleSpeed()
@@ -75,9 +69,18 @@ public class PlayerController : MonoBehaviour
 
     private void handleJumping()
     {
-        if (Input.GetButtonDown("Jump") && m_IsOnGround)
+        if(Input.GetButtonDown("Jump"))
         {
-            m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, m_JumpForce);
+            if(m_IsOnGround || m_CanDoubleJump)
+            {
+                m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, m_JumpForce);
+                m_CanDoubleJump = !m_CanDoubleJump;
+            }
+        }
+
+        if(Input.GetButtonUp("Jump") && m_RigidBody.velocity.y > 0f) // for short time pressing space (smaller jump)
+        {
+            m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, m_RigidBody.velocity.y * 0.5f);
         }
     }
 
@@ -103,6 +106,14 @@ public class PlayerController : MonoBehaviour
         else
         {
             m_Animator.SetBool("IsCrouching", false);
+        }
+    }
+
+    private void updateCanDoubleJump()
+    {
+        if (m_IsOnGround && !Input.GetButton("Jump"))
+        {
+            m_CanDoubleJump = false;
         }
     }
 }

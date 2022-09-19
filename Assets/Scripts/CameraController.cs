@@ -1,25 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
     private PlayerController m_PlayerController;
 
-    public BoxCollider2D m_BoundsBox;
+    [SerializeField] private BoxCollider2D m_BoundsBox;
 
     private float m_HalfHeight, m_HalfWidth;
 
-    // Start is called before the first frame update
     void Start()
     {
         m_PlayerController = FindObjectOfType<PlayerController>();
-
         m_HalfHeight = Camera.main.orthographicSize;
         m_HalfWidth = m_HalfHeight * Camera.main.aspect;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(m_PlayerController != null)

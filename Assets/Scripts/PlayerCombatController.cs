@@ -1,13 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCombatController : MonoBehaviour
 {
-    public Animator m_Animator;
+    [SerializeField] private Animator m_Animator;
 
-   
+    [SerializeField] private Transform m_AttackPoint;
+    [SerializeField] private float m_AttackRange = .5f;
+    [SerializeField] private LayerMask m_EnemyLayers;
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Z))
@@ -18,9 +18,26 @@ public class PlayerCombatController : MonoBehaviour
 
     private void Attack()
     {
-        // play attack anim
+        // play attack animation:
         m_Animator.SetTrigger("Attack");
-        // detect enemis in range of attack
-        // damage them
+
+        // detect enemies in the range of the attack:
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(m_AttackPoint.position, m_AttackRange, m_EnemyLayers);
+
+        // damage them:
+        foreach(Collider2D enemy in hitEnemies)
+        {
+            Debug.Log("We hit " + enemy.name);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if(m_AttackPoint == null)
+        {
+            return;
+        }
+
+        Gizmos.DrawWireSphere(m_AttackPoint.position, m_AttackRange);
     }
 }
