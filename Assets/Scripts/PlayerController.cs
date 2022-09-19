@@ -19,14 +19,6 @@ public class PlayerController : MonoBehaviour
 
     private bool m_CanDoubleJump;
 
-    [Header("Wall Jumping + Sliding")]
-    [SerializeField] private float m_WallJumpTime = 0.2f;
-    [SerializeField] private float m_WallSlideSpeed = 0.3f;
-    [SerializeField] private float m_WallDistance = 0.5f;
-    private bool m_IsWallSliding = false;
-    private RaycastHit2D m_WallCheckHit;
-    private float m_JumpTime;
-
     void Update()
     {
         handleSpeed();
@@ -36,44 +28,6 @@ public class PlayerController : MonoBehaviour
         handleJumping();
         updateAnimationsParameters();
         updateCanDoubleJump();
-
-
-        // ********************************** wall jump **********************************
-        float horizontalInput = Input.GetAxis("Horizontal");
-
-
-        if (horizontalInput > 0)
-        {
-            m_WallCheckHit = Physics2D.Raycast(transform.position, new Vector2(m_WallDistance, 0), m_WhatIsGround);
-
-            Debug.DrawRay(transform.position, new Vector2(m_WallDistance, 0), Color.blue);
-
-        }
-        else
-        {
-            m_WallCheckHit = Physics2D.Raycast(transform.position, new Vector2(-m_WallDistance, 0), m_WhatIsGround);
-
-            Debug.DrawRay(transform.position, new Vector2(-m_WallDistance, 0), Color.blue);
-        }
-
-
-        if(m_WallCheckHit && !m_IsOnGround && horizontalInput != 0)
-        {
-            m_IsWallSliding = true;
-            m_JumpTime = Time.time + m_WallJumpTime;
-        }
-        else if(m_JumpTime < Time.time)
-        {
-            m_IsWallSliding = false;
-        }
-
-        if(m_IsWallSliding)
-        {
-            m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, Mathf.Clamp(m_RigidBody.velocity.y, m_WallSlideSpeed, float.MaxValue));
-        }
-
-
-        // ********************************************************************************
     }
 
     private void handleSpeed()
