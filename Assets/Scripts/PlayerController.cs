@@ -2,19 +2,24 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Rigid Body")]
     [SerializeField] private Rigidbody2D m_RigidBody;
 
+    [Header("Main Settings")]
     [SerializeField] private float m_MoveSpeed = 8f;
     [SerializeField] private float m_JumpForce = 20f;
 
+    [Header("Ground Settings")]
     [SerializeField] private Transform m_GroundCheckPoint;
     [SerializeField] private LayerMask m_WhatIsGround;
     private bool m_IsOnGround;
 
+    [Header("Animator")]
     [SerializeField] private Animator m_Animator;
 
     private bool m_CanDoubleJump;
 
+    [Header("Wall Jumping + Sliding")]
     [SerializeField] private float m_WallJumpTime = 0.2f;
     [SerializeField] private float m_WallSlideSpeed = 0.3f;
     [SerializeField] private float m_WallDistance = 0.5f;

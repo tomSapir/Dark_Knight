@@ -4,6 +4,7 @@ public class CameraController : MonoBehaviour
 {
     private PlayerController m_PlayerController;
 
+    [Header("Bounds")]
     [SerializeField] private BoxCollider2D m_BoundsBox;
 
     private float m_HalfHeight, m_HalfWidth;

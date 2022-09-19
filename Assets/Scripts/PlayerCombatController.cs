@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class PlayerCombatController : MonoBehaviour
 {
+    [Header("Animator")]
     [SerializeField] private Animator m_Animator;
 
+    [Header("Attack Settings")]
     [SerializeField] private Transform m_AttackPoint;
     [SerializeField] private float m_AttackRange = .5f;
     [SerializeField] private LayerMask m_EnemyLayers;
