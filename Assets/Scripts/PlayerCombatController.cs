@@ -16,6 +16,7 @@ public class PlayerCombatController : MonoBehaviour
     [Header("Air Attacks")]
     [SerializeField] private int m_AirAttackIndex = 1;
 
+    private int m_AttackDamage = 40;
 
     public int GroundAttackIndex
     {
@@ -90,7 +91,7 @@ public class PlayerCombatController : MonoBehaviour
         // damage them:
         foreach(Collider2D enemy in hitEnemies)
         {
-            Debug.Log("We hit " + enemy.name);
+            enemy.GetComponent<EnemyController>().TakeDamage(m_AttackDamage);
         }
     }
 
