@@ -1,19 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
-using System;
 
 public class EnemyAi : MonoBehaviour
 {
-
+    [Header("Main Settings")]
     [SerializeField] private Transform m_Target;
     [SerializeField] private float m_Speed;
     [SerializeField] private float m_NextWayPointDistance = 3f;
-
-
     [SerializeField] private Transform m_EnemyGFX;
 
+    [Header("Path Settings")]
     private Path m_Path;
     private int m_CurrentWayPoint = 0;
     private bool m_ReachedEndOfPath = false;
@@ -21,12 +18,55 @@ public class EnemyAi : MonoBehaviour
     private Seeker m_Seeker;
     private Rigidbody2D m_RigidBody;
 
+    [Header("Attack Settings")]
+    [SerializeField] private float m_EnemyAttackCoolDown = 1f;
+    [SerializeField] private float m_Damage = 1f;
+
+    private bool m_PlayerInRange = false;
+    private bool m_CanAttack = true;
+
+    [Header("Animator")]
+    [SerializeField] private Animator m_Animator;
+
     void Start()
     {
         m_Seeker = GetComponent<Seeker>();
         m_RigidBody = GetComponent<Rigidbody2D>();
 
         InvokeRepeating("updatePath", 0f, .5f);
+    }
+
+    void Update()
+    {
+        if(m_PlayerInRange && m_CanAttack)
+        {
+            // damage player
+            StartCoroutine(AttackCoolDown());
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            m_PlayerInRange = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            m_PlayerInRange = false;
+        }
+    }
+
+    IEnumerator AttackCoolDown()
+    {
+        m_CanAttack = false;
+        m_Animator.SetTrigger("Attack");
+        yield return new WaitForSeconds(m_EnemyAttackCoolDown);
+        m_CanAttack = true;
     }
 
     private void updatePath()
@@ -75,7 +115,11 @@ public class EnemyAi : MonoBehaviour
             m_CurrentWayPoint++;
         }
 
-        //m_EnemyGFX
+        updateFlip();
+    }
+
+    private void updateFlip()
+    {
         if (m_RigidBody.velocity.x >= 0.01f)
         {
             m_EnemyGFX.localScale = new Vector3(1f, 1f, 1f);

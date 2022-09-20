@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -31,7 +29,16 @@ public class EnemyController : MonoBehaviour
     private void die()
     {
         m_Animator.SetBool("IsDead", true);
-        GetComponent<CapsuleCollider2D>().enabled = false;
+
+        if(GetComponent<CapsuleCollider2D>() != null)
+        {
+            GetComponent<CapsuleCollider2D>().enabled = false;
+        }
+        else if(GetComponent<CircleCollider2D>() != null)
+        {
+            GetComponent<CircleCollider2D>().enabled = false;
+        }
+
         GetComponent<Rigidbody2D>().gravityScale = 0f;
         this.enabled = false;
     }
