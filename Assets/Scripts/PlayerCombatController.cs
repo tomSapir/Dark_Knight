@@ -16,7 +16,10 @@ public class PlayerCombatController : MonoBehaviour
     [Header("Air Attacks")]
     [SerializeField] private int m_AirAttackIndex = 1;
 
-    private int m_AttackDamage = 40;
+    private int m_AttackDamage = 20;
+
+
+
 
     public int GroundAttackIndex
     {
@@ -82,13 +85,10 @@ public class PlayerCombatController : MonoBehaviour
 
     private void Attack()
     {
-
         m_Animator.SetTrigger("Attack");
 
-        // detect enemies in the range of the attack:
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(m_AttackPoint.position, m_AttackRange, m_EnemyLayers);
 
-        // damage them:
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyController>().TakeDamage(m_AttackDamage);

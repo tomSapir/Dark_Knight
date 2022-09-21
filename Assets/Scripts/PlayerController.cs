@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -19,6 +20,17 @@ public class PlayerController : MonoBehaviour
 
     private bool m_CanDoubleJump;
 
+
+    [Header("Health")]
+    [SerializeField] private int m_MaxHealth = 100;
+    [SerializeField] private int m_CurrentHealth;
+
+
+    private void Start()
+    {
+        m_CurrentHealth = m_MaxHealth;
+    }
+
     void Update()
     {
         handleSpeed();
@@ -28,6 +40,22 @@ public class PlayerController : MonoBehaviour
         handleJumping();
         updateAnimationsParameters();
         updateCanDoubleJump();
+    }
+
+    public void TakeDamage(int i_Damage)
+    {
+        m_CurrentHealth -= i_Damage;
+        m_Animator.SetTrigger("Hurt");
+
+        if (m_CurrentHealth <= 0)
+        {
+            die();
+        }
+    }
+
+    private void die()
+    {
+        throw new NotImplementedException();
     }
 
     private void handleSpeed()

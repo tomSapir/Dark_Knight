@@ -20,7 +20,7 @@ public class EnemyAi : MonoBehaviour
 
     [Header("Attack Settings")]
     [SerializeField] private float m_EnemyAttackCoolDown = 1f;
-    [SerializeField] private float m_Damage = 1f;
+    [SerializeField] private int m_Damage = 10;
 
     private bool m_PlayerInRange = false;
     private bool m_CanAttack = true;
@@ -40,7 +40,6 @@ public class EnemyAi : MonoBehaviour
     {
         if(m_PlayerInRange && m_CanAttack)
         {
-            // damage player
             StartCoroutine(AttackCoolDown());
         }
     }
@@ -65,6 +64,13 @@ public class EnemyAi : MonoBehaviour
     {
         m_CanAttack = false;
         m_Animator.SetTrigger("Attack");
+
+        // wait 1 sec
+        yield return new WaitForSeconds(0.5f);
+
+        // play player get hit animation + damage the player
+        GameObject.Find("Player").GetComponent<PlayerController>().TakeDamage(m_Damage);
+        
         yield return new WaitForSeconds(m_EnemyAttackCoolDown);
         m_CanAttack = true;
     }
