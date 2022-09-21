@@ -2,37 +2,59 @@ using System.Collections;
 using UnityEngine;
 using Pathfinding;
 
-public class EnemyAi : MonoBehaviour
+public class FlyingEnemyAi : MonoBehaviour
 {
+    [Header("Animator")]
+    [SerializeField] private Animator m_Animator;
+
     [Header("Main Settings")]
     [SerializeField] private Transform m_Target;
     [SerializeField] private float m_Speed;
     [SerializeField] private float m_NextWayPointDistance = 3f;
     [SerializeField] private Transform m_EnemyGFX;
+    [SerializeField] private Rigidbody2D m_RigidBody;
 
     [Header("Path Settings")]
-    private Path m_Path;
-    private int m_CurrentWayPoint = 0;
-    private bool m_ReachedEndOfPath = false;
-
-    private Seeker m_Seeker;
-    private Rigidbody2D m_RigidBody;
+    [SerializeField] private Path m_Path;
+    [SerializeField] private int m_CurrentWayPoint = 0;
+    [SerializeField] private bool m_ReachedEndOfPath = false;
+    [SerializeField] private Seeker m_Seeker;
 
     [Header("Attack Settings")]
     [SerializeField] private float m_EnemyAttackCoolDown = 1f;
     [SerializeField] private int m_Damage = 10;
+    [SerializeField] private bool m_PlayerInRange = false;
+    [SerializeField] private bool m_CanAttack = true;
+    [SerializeField] private int m_MaxAttackIndex;
+    [SerializeField] private int m_AttackIndex = 1;
 
-    private bool m_PlayerInRange = false;
-    private bool m_CanAttack = true;
-
-    [Header("Animator")]
-    [SerializeField] private Animator m_Animator;
+    public int AttackIndex
+    {
+        get
+        {
+            return m_AttackIndex;
+        }
+        set
+        {
+            if(value == m_MaxAttackIndex + 1)
+            {
+                m_AttackIndex = 1;
+            }
+            else if(value == 0)
+            {
+                m_AttackIndex = m_MaxAttackIndex;
+            }
+            else
+            {
+                m_AttackIndex = value;
+            }
+        }
+    }
 
     void Start()
     {
         m_Seeker = GetComponent<Seeker>();
         m_RigidBody = GetComponent<Rigidbody2D>();
-
         InvokeRepeating("updatePath", 0f, .5f);
     }
 
@@ -40,7 +62,7 @@ public class EnemyAi : MonoBehaviour
     {
         if(m_PlayerInRange && m_CanAttack)
         {
-            StartCoroutine(AttackCoolDown());
+            StartCoroutine(AttackPlayer());
         }
     }
 
@@ -60,17 +82,13 @@ public class EnemyAi : MonoBehaviour
         }
     }
 
-    IEnumerator AttackCoolDown()
+    IEnumerator AttackPlayer()
     {
         m_CanAttack = false;
         m_Animator.SetTrigger("Attack");
-
-        // wait 1 sec
+        m_Animator.SetInteger("AttackIndex", AttackIndex++);
         yield return new WaitForSeconds(0.5f);
-
-        // play player get hit animation + damage the player
         GameObject.Find("Player").GetComponent<PlayerController>().TakeDamage(m_Damage);
-        
         yield return new WaitForSeconds(m_EnemyAttackCoolDown);
         m_CanAttack = true;
     }
@@ -83,11 +101,11 @@ public class EnemyAi : MonoBehaviour
         }
     }
 
-    private void onPathComplete(Path p)
+    private void onPathComplete(Path path)
     {
-        if(!p.error)
+        if(!path.error)
         {
-            m_Path = p;
+            m_Path = path;
             m_CurrentWayPoint = 0;
         }
     }
@@ -113,7 +131,6 @@ public class EnemyAi : MonoBehaviour
         Vector2 force = direction * m_Speed * Time.deltaTime;
 
         m_RigidBody.AddForce(force);
-
 
         float distance = Vector2.Distance(m_RigidBody.position, m_Path.vectorPath[m_CurrentWayPoint]);
         if(distance < m_NextWayPointDistance)

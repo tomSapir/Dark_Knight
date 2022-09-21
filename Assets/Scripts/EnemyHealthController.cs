@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyHealthController : MonoBehaviour
 {
     [Header("Animator")]
     [SerializeField] private Animator m_Animator;
@@ -18,18 +18,15 @@ public class EnemyController : MonoBehaviour
     {
         m_CurrentHealth -= i_Damage;
         m_Animator.SetTrigger("Hurt");
-
         if(m_CurrentHealth <= 0)
         {
             die();
         }
     }
 
-
     private void die()
     {
         m_Animator.SetBool("IsDead", true);
-
         if(GetComponent<CapsuleCollider2D>() != null)
         {
             GetComponent<CapsuleCollider2D>().enabled = false;

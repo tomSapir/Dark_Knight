@@ -9,17 +9,13 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField] private Transform m_AttackPoint;
     [SerializeField] private float m_AttackRange = .5f;
     [SerializeField] private LayerMask m_EnemyLayers;
+    [SerializeField] private int m_AttackDamage = 20;
 
     [Header("Ground Attacks")]
     [SerializeField] private int m_GroundAttackIndex = 1;
 
     [Header("Air Attacks")]
     [SerializeField] private int m_AirAttackIndex = 1;
-
-    private int m_AttackDamage = 20;
-
-
-
 
     public int GroundAttackIndex
     {
@@ -91,7 +87,7 @@ public class PlayerCombatController : MonoBehaviour
 
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyController>().TakeDamage(m_AttackDamage);
+            enemy.GetComponent<EnemyHealthController>().TakeDamage(m_AttackDamage);
         }
     }
 

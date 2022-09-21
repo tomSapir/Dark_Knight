@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     private bool m_CanDoubleJump;
 
-
     [Header("Health")]
     [SerializeField] private int m_MaxHealth = 100;
     [SerializeField] private int m_CurrentHealth;
