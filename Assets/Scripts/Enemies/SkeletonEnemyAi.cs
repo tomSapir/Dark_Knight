@@ -1,75 +1,90 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundEnemyAi : MonoBehaviour
+public class SkeletonEnemyAi : MonoBehaviour
 {
-    public Transform m_RayCast;
-    public LayerMask m_RaycastMask;
-    public float m_RayCastLength;
     public float m_AttackDistance; // minimum distance to attack
     public float m_MoveSpeed;
     public float m_Timer; // timer for cooldown between attacks
+    public Transform m_LeftLimit, m_RightLimit;
+    [HideInInspector] public Transform m_Target;
+    [HideInInspector] public bool m_IsPlayerInRange; // if player is in range
+    public GameObject m_HotZone;
+    public GameObject m_TriggerArea;
 
-    private RaycastHit2D m_Hit;
-    private GameObject m_Target;
     private Animator m_Animator;
     private float m_DistanceFromPlayer;
     private bool m_IsInAttackMode;
-    private bool m_IsPlayerInRange; // if player is in range
     private bool m_IsInCooling; // if enemy is cooling after attack
     private float m_InitTimer;
 
-
     private void Awake()
     {
+        SelectTarget();
         m_InitTimer = m_Timer; // store the initial value of the timer
         m_Animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        if(m_IsPlayerInRange)
+        if(!m_IsInAttackMode)
         {
-            m_Hit = Physics2D.Raycast(m_RayCast.position, Vector2.left, m_RayCastLength, m_RaycastMask);
-            RaycastDebugger();
+            move();
         }
 
-        // when player is detected:
-        if(m_Hit.collider != null)
+        if(!IsInsideTheLimits() && !m_IsPlayerInRange 
+            && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Attack1") 
+            && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Attack2"))
+        {
+            SelectTarget();
+        }
+
+        if(m_IsPlayerInRange)
         {
             enemyLogic();
         }
-        else if(m_Hit.collider == null)
-        {
-            m_IsPlayerInRange = false;
-        }
-
-        if(m_IsPlayerInRange == false)
-        {
-            m_Animator.SetBool("CanWalk", false);
-            stopAttack();
-        }
     }
 
-    // to check if player entered the trigger zone:
-    private void OnTriggerEnter2D(Collider2D other)
+    public void SelectTarget()
     {
-       
-       if(other.gameObject.tag == "Player")
+        float distanceToLeftLimit = Vector2.Distance(transform.position, m_LeftLimit.position);
+        float distanceToRightLimit = Vector2.Distance(transform.position, m_RightLimit.position);
+
+        if(distanceToLeftLimit > distanceToRightLimit)
         {
-            m_Target = other.gameObject;
-            m_IsPlayerInRange = true;
+            m_Target = m_LeftLimit;
         }
+        else
+        {
+            m_Target = m_RightLimit;
+        }
+
+        Flip();
+    }
+
+    public void Flip()
+    {
+        Vector3 rotation = transform.eulerAngles;
+
+        if(transform.position.x > m_Target.position.x)
+        {
+            rotation.y = 180f;
+        }
+        else
+        {
+            rotation.y = 0f;
+        }
+
+        transform.eulerAngles = rotation;
     }
 
     private void enemyLogic()
     {
-        Debug.Log("Distance from player: " + m_DistanceFromPlayer + "    ||   Attack distance: " + m_AttackDistance);
-        m_DistanceFromPlayer = Vector2.Distance(transform.position, m_Target.transform.position);
+        m_DistanceFromPlayer = Vector2.Distance(transform.position, m_Target.position);
         if (m_DistanceFromPlayer > m_AttackDistance)
         {
-            move();
             stopAttack();
         }
         else if(m_AttackDistance >= m_DistanceFromPlayer && m_IsInCooling == false)
@@ -90,7 +105,7 @@ public class GroundEnemyAi : MonoBehaviour
         if(!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Attack1") &&
             !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Attack2"))
         {
-            Vector2 targetPosition = new Vector2(m_Target.transform.position.x, transform.position.y);
+            Vector2 targetPosition = new Vector2(m_Target.position.x, transform.position.y);
 
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, m_MoveSpeed * Time.deltaTime);
         }
@@ -123,21 +138,15 @@ public class GroundEnemyAi : MonoBehaviour
         }
     }
 
-    void RaycastDebugger()
-    {
-        if(m_DistanceFromPlayer >= m_AttackDistance)
-        {
-            Debug.DrawRay(m_RayCast.position, Vector2.left * m_RayCastLength, Color.red);
-        }
-        else if(m_AttackDistance > m_DistanceFromPlayer)
-        {
-            Debug.DrawRay(m_RayCast.position, Vector2.left * m_RayCastLength, Color.green);
-        }
-    }
 
     public void TriggerCooling()
     {
         m_IsInCooling = true;
     }
 
+
+    private bool IsInsideTheLimits()
+    {
+        return transform.position.x > m_LeftLimit.position.x && transform.position.x < m_RightLimit.position.x;
+    }
 }

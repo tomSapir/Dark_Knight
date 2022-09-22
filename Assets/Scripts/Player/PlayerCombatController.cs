@@ -87,7 +87,16 @@ public class PlayerCombatController : MonoBehaviour
 
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyHealthController>().TakeDamage(m_AttackDamage);
+            EnemyHealthController enemyHealthController = enemy.GetComponent<EnemyHealthController>();
+
+            if(enemyHealthController == null)
+            {
+                enemy.GetComponentInParent<EnemyHealthController>().TakeDamage(m_AttackDamage);
+            }
+            else
+            {
+                enemyHealthController.TakeDamage(m_AttackDamage);
+            }
         }
     }
 

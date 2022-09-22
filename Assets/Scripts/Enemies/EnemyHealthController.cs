@@ -27,16 +27,6 @@ public class EnemyHealthController : MonoBehaviour
     private void die()
     {
         m_Animator.SetBool("IsDead", true);
-        if(GetComponent<CapsuleCollider2D>() != null)
-        {
-            GetComponent<CapsuleCollider2D>().enabled = false;
-        }
-        else if(GetComponent<CircleCollider2D>() != null)
-        {
-            GetComponent<CircleCollider2D>().enabled = false;
-        }
-
-        GetComponent<Rigidbody2D>().gravityScale = 0f;
-        this.enabled = false;
     }
 }
+

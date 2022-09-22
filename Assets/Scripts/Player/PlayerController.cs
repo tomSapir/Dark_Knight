@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int m_CurrentHealth;
 
 
+    private bool m_IsAttacking = false;
+    private bool m_IsAirAttacking = false;
+    private bool m_IsGroundAttacking = false;
+
     private void Start()
     {
         m_CurrentHealth = m_MaxHealth;
@@ -32,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        updateIsAttacking();
         handleSpeed();
         handleMoveSideways();
         handleDirectionChange();
@@ -39,6 +44,23 @@ public class PlayerController : MonoBehaviour
         handleJumping();
         updateAnimationsParameters();
         updateCanDoubleJump();
+    }
+
+    private void updateIsAttacking()
+    {
+        m_IsAttacking = m_Animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack");
+        updateIsAirAttacking();
+        updateIsGroundAttacking();
+    }
+
+    private void updateIsAirAttacking()
+    {
+        m_IsAirAttacking = !m_IsOnGround && m_IsAttacking;
+    }
+
+    private void updateIsGroundAttacking()
+    {
+        m_IsGroundAttacking = m_IsOnGround && m_IsAttacking;
     }
 
     public void TakeDamage(int i_Damage)
@@ -59,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
     private void handleSpeed()
     {
-        if (m_Animator.GetBool("IsCrouching"))
+        if (m_Animator.GetBool("IsCrouching") || m_IsGroundAttacking)
         {
             m_MoveSpeed = 0f;
         }
