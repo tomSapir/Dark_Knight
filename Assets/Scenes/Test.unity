@@ -6926,6 +6926,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 248843741508098276, guid: 5fbee1b7a63bcab45b069893537eb1b7, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 248843741798898666, guid: 5fbee1b7a63bcab45b069893537eb1b7, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 248843742268835211, guid: 5fbee1b7a63bcab45b069893537eb1b7, type: 3}
       propertyPath: m_Name
       value: Skeleton_Enemy
@@ -6940,6 +6948,14 @@ PrefabInstance:
       objectReference: {fileID: 1266275408}
     - target: {fileID: 248843742268835316, guid: 5fbee1b7a63bcab45b069893537eb1b7, type: 3}
       propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 248843742268835316, guid: 5fbee1b7a63bcab45b069893537eb1b7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 248843742268835316, guid: 5fbee1b7a63bcab45b069893537eb1b7, type: 3}
+      propertyPath: m_LocalScale.y
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 248843742268835316, guid: 5fbee1b7a63bcab45b069893537eb1b7, type: 3}
@@ -7046,6 +7062,10 @@ PrefabInstance:
     - target: {fileID: 696843859328629219, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 696843860050729125, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.7542
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
