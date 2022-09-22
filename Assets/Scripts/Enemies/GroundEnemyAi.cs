@@ -125,7 +125,7 @@ public class GroundEnemyAi : MonoBehaviour
 
     void RaycastDebugger()
     {
-        if(m_DistanceFromPlayer > m_AttackDistance)
+        if(m_DistanceFromPlayer >= m_AttackDistance)
         {
             Debug.DrawRay(m_RayCast.position, Vector2.left * m_RayCastLength, Color.red);
         }
