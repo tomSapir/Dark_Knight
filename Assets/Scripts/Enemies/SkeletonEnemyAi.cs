@@ -114,10 +114,10 @@ public class SkeletonEnemyAi : MonoBehaviour
     private void attack()
     {
         m_Timer = m_InitTimer; // reset timer when player enter attack range
-        m_IsInAttackMode = true;
-
+      
         m_Animator.SetBool("CanWalk", false);
         m_Animator.SetBool("Attack", true);
+      
     }
 
     private void stopAttack()
@@ -135,6 +135,7 @@ public class SkeletonEnemyAi : MonoBehaviour
         {
             m_IsInCooling = false;
             m_Timer = m_InitTimer;
+
         }
     }
 

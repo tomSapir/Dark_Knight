@@ -24,10 +24,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int m_MaxHealth = 100;
     [SerializeField] private int m_CurrentHealth;
 
-
     private bool m_IsAttacking = false;
     private bool m_IsAirAttacking = false;
     private bool m_IsGroundAttacking = false;
+
+    [Header("Dash Settings")]
+    [SerializeField] private float m_DashSpeed;
+    [SerializeField] private float m_DashTime;
+    private float m_DashCounter;
+    private bool m_IsDashing = false;
+
+
+    [SerializeField] private SpriteRenderer m_SpriteRenderer;
+    [SerializeField] private SpriteRenderer m_AfterImage;
+    [SerializeField] private float m_AfterImageLifeTime;
+    [SerializeField] private float m_TimeBetweenAfterImages;
+    private float m_AfterImageCounter;
+    [SerializeField] private Color m_AfterImageColor;
+
 
     private void Start()
     {
@@ -36,6 +50,28 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetButtonDown("Fire2")) // dashing
+        {
+            m_IsDashing = true;
+            m_DashCounter = m_DashTime;
+            showAfterImage();
+        }
+
+        if(m_DashCounter > 0) // in the middle of a dash
+        {
+            m_DashCounter = m_DashCounter - Time.deltaTime;
+
+            m_AfterImageCounter -= Time.deltaTime;
+            if(m_AfterImageCounter <= 0)
+            {
+                showAfterImage();
+            }
+        }
+        else
+        {
+            m_IsDashing = false;
+        }
+
         updateIsAttacking();
         handleSpeed();
         handleMoveSideways();
@@ -100,18 +136,28 @@ public class PlayerController : MonoBehaviour
 
     private void handleMoveSideways()
     {
-        m_RigidBody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * m_MoveSpeed, m_RigidBody.velocity.y);
+        if(m_IsDashing)
+        {
+            m_RigidBody.velocity = new Vector2(m_DashSpeed * transform.localScale.x, m_RigidBody.velocity.y);
+        }
+        else
+        {
+            m_RigidBody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * m_MoveSpeed, m_RigidBody.velocity.y);
+        }
     }
 
     private void handleDirectionChange()
     {
-        if (m_RigidBody.velocity.x < 0)
+        if(!m_IsDashing)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-        }
-        else if (m_RigidBody.velocity.x > 0)
-        {
-            transform.localScale = Vector3.one;
+            if (m_RigidBody.velocity.x < 0)
+            {
+                transform.localScale = new Vector3(-(MathF.Abs(transform.localScale.x)), transform.localScale.y, transform.localScale.z);
+            }
+            else if (m_RigidBody.velocity.x > 0)
+            {
+                transform.localScale = new Vector3((MathF.Abs(transform.localScale.x)), transform.localScale.y, transform.localScale.z);
+            }
         }
     }
 
@@ -168,5 +214,18 @@ public class PlayerController : MonoBehaviour
         {
             m_CanDoubleJump = false;
         }
+    }
+
+    private void showAfterImage()
+    {
+        SpriteRenderer afterImage = Instantiate(m_AfterImage, transform.position, transform.rotation);
+
+        afterImage.sprite = m_SpriteRenderer.sprite;
+        afterImage.transform.localScale = transform.localScale;
+        afterImage.color = m_AfterImageColor;
+
+        Destroy(afterImage.gameObject, m_AfterImageLifeTime);
+
+        m_AfterImageCounter = m_TimeBetweenAfterImages;
     }
 }

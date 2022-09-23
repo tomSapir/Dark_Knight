@@ -11,71 +11,11 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField] private LayerMask m_EnemyLayers;
     [SerializeField] private int m_AttackDamage = 20;
 
-    [Header("Ground Attacks")]
-    [SerializeField] private int m_GroundAttackIndex = 1;
-
-    [Header("Air Attacks")]
-    [SerializeField] private int m_AirAttackIndex = 1;
-
-    public int GroundAttackIndex
-    {
-        get
-        {
-            return m_GroundAttackIndex;
-        }
-        set
-        {
-            if(value == 4)
-            {
-                m_GroundAttackIndex = 1;
-            }
-            else if(value == 0)
-            {
-                m_GroundAttackIndex = 3;
-            }
-            else
-            {
-                m_GroundAttackIndex = value;
-            }
-        }
-    }
-
-    public int AirAttackIndex
-    {
-        get
-        {
-            return m_AirAttackIndex;
-        }
-        set
-        {
-            if (value == 4)
-            {
-                m_AirAttackIndex = 1;
-            }
-            else if (value == 0)
-            {
-                m_AirAttackIndex = 3;
-            }
-            else
-            {
-                m_AirAttackIndex = value;
-            }
-        }
-    }
-
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetButtonDown("Fire1")) // Left click on mouse
         {
             Attack();
-            if (!m_Animator.GetBool("IsOnGround"))
-            {
-                m_Animator.SetInteger("AirAttackIndex", AirAttackIndex++);
-            }
-            else
-            {
-                m_Animator.SetInteger("GroundAttackIndex", GroundAttackIndex++);
-            }
         }
     }
 
