@@ -3,24 +3,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Rigid Body")]
     [SerializeField] private Rigidbody2D m_RigidBody;
 
-    [Header("Main Settings")]
     [SerializeField] private float m_MoveSpeed = 8f;
     [SerializeField] private float m_JumpForce = 20f;
 
-    [Header("Ground Settings")]
     [SerializeField] private Transform m_GroundCheckPoint;
     [SerializeField] private LayerMask m_WhatIsGround;
     private bool m_IsOnGround;
 
-    [Header("Animator")]
     [SerializeField] private Animator m_Animator;
 
     private bool m_CanDoubleJump;
 
-    [Header("Health")]
     [SerializeField] private int m_MaxHealth = 100;
     [SerializeField] private int m_CurrentHealth;
 
@@ -28,12 +23,10 @@ public class PlayerController : MonoBehaviour
     private bool m_IsAirAttacking = false;
     private bool m_IsGroundAttacking = false;
 
-    [Header("Dash Settings")]
     [SerializeField] private float m_DashSpeed;
     [SerializeField] private float m_DashTime;
     private float m_DashCounter;
     private bool m_IsDashing = false;
-
 
     [SerializeField] private SpriteRenderer m_SpriteRenderer;
     [SerializeField] private SpriteRenderer m_AfterImage;
@@ -41,6 +34,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_TimeBetweenAfterImages;
     private float m_AfterImageCounter;
     [SerializeField] private Color m_AfterImageColor;
+
+    [SerializeField] private float m_TimeToWaitAfterDashing;
+    private float m_DashRechargeCounter;
 
 
     private void Start()
@@ -50,12 +46,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("Fire2")) // dashing
+        if(m_DashRechargeCounter > 0)
         {
-            m_IsDashing = true;
-            m_DashCounter = m_DashTime;
-            showAfterImage();
+            m_DashRechargeCounter -= Time.deltaTime;
         }
+        else
+        {
+            if (Input.GetButtonDown("Fire2")) // dashing
+            {
+                m_Animator.SetTrigger("Dash");
+                m_IsDashing = true;
+                m_DashCounter = m_DashTime;
+                showAfterImage();
+            }
+        }
+
 
         if(m_DashCounter > 0) // in the middle of a dash
         {
@@ -66,6 +71,8 @@ public class PlayerController : MonoBehaviour
             {
                 showAfterImage();
             }
+
+            m_DashRechargeCounter = m_TimeToWaitAfterDashing;
         }
         else
         {
@@ -223,9 +230,7 @@ public class PlayerController : MonoBehaviour
         afterImage.sprite = m_SpriteRenderer.sprite;
         afterImage.transform.localScale = transform.localScale;
         afterImage.color = m_AfterImageColor;
-
         Destroy(afterImage.gameObject, m_AfterImageLifeTime);
-
         m_AfterImageCounter = m_TimeBetweenAfterImages;
     }
 }
