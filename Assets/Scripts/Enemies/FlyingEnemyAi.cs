@@ -4,23 +4,19 @@ using Pathfinding;
 
 public class FlyingEnemyAi : MonoBehaviour
 {
-    [Header("Animator")]
     [SerializeField] private Animator m_Animator;
 
-    [Header("Main Settings")]
     [SerializeField] private Transform m_Target;
     [SerializeField] private float m_Speed;
     [SerializeField] private float m_NextWayPointDistance = 3f;
     [SerializeField] private Transform m_EnemyGFX;
     [SerializeField] private Rigidbody2D m_RigidBody;
 
-    [Header("Path Settings")]
     [SerializeField] private Path m_Path;
     [SerializeField] private int m_CurrentWayPoint = 0;
     [SerializeField] private bool m_ReachedEndOfPath = false;
     [SerializeField] private Seeker m_Seeker;
 
-    [Header("Attack Settings")]
     [SerializeField] private float m_EnemyAttackCoolDown = 1f;
     [SerializeField] private int m_Damage = 10;
     [SerializeField] private bool m_PlayerInRange = false;

@@ -3,7 +3,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // ******************* Main Components *******************
     [SerializeField] private Rigidbody2D m_RigidBody;
+    [SerializeField] private Animator m_Animator;
+    [SerializeField] private SpriteRenderer m_SpriteRenderer;
+    private PlayerAbillityTracker m_PlayerAbillityTracker;
+
 
     [SerializeField] private float m_MoveSpeed = 8f;
     [SerializeField] private float m_JumpForce = 20f;
@@ -12,36 +17,35 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_WhatIsGround;
     private bool m_IsOnGround;
 
-    [SerializeField] private Animator m_Animator;
-
+    // ******************* Double Jump *******************
     private bool m_CanDoubleJump;
 
+    // ******************* Health *******************
     [SerializeField] private int m_MaxHealth = 100;
     [SerializeField] private int m_CurrentHealth;
 
+    // ******************* Attack Flags *******************
     private bool m_IsAttacking = false;
     private bool m_IsAirAttacking = false;
     private bool m_IsGroundAttacking = false;
 
+    // ******************* Dash *******************
     [SerializeField] private float m_DashSpeed;
     [SerializeField] private float m_DashTime;
     private float m_DashCounter;
     private bool m_IsDashing = false;
-
-    [SerializeField] private SpriteRenderer m_SpriteRenderer;
     [SerializeField] private SpriteRenderer m_AfterImage;
     [SerializeField] private float m_AfterImageLifeTime;
     [SerializeField] private float m_TimeBetweenAfterImages;
     private float m_AfterImageCounter;
     [SerializeField] private Color m_AfterImageColor;
-
     [SerializeField] private float m_TimeToWaitAfterDashing;
     private float m_DashRechargeCounter;
-
 
     private void Start()
     {
         m_CurrentHealth = m_MaxHealth;
+        m_PlayerAbillityTracker = GetComponent<PlayerAbillityTracker>();
     }
 
     void Update()
@@ -52,7 +56,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Fire2")) // dashing
+            if (Input.GetButtonDown("Fire2") && m_PlayerAbillityTracker.m_CanDash) // dashing
             {
                 m_Animator.SetTrigger("Dash");
                 m_IsDashing = true;
@@ -60,7 +64,6 @@ public class PlayerController : MonoBehaviour
                 showAfterImage();
             }
         }
-
 
         if(m_DashCounter > 0) // in the middle of a dash
         {
@@ -177,7 +180,7 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetButtonDown("Jump"))
         {
-            if(m_IsOnGround || m_CanDoubleJump)
+            if(m_IsOnGround || (m_CanDoubleJump && m_PlayerAbillityTracker.m_CanDoubleJump))
             {
                 m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, m_JumpForce);
                 m_CanDoubleJump = !m_CanDoubleJump;

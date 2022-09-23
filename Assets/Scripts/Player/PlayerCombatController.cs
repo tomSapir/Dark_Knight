@@ -9,6 +9,7 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField] private Transform m_AttackPoint;
     [SerializeField] private float m_AttackRange = .5f;
     [SerializeField] private LayerMask m_EnemyLayers;
+    [SerializeField] private LayerMask m_DestructibleLayers;
     [SerializeField] private int m_AttackDamage = 20;
 
     void Update()
@@ -24,8 +25,9 @@ public class PlayerCombatController : MonoBehaviour
         m_Animator.SetTrigger("Attack");
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(m_AttackPoint.position, m_AttackRange, m_EnemyLayers);
+        Collider2D[] hitDestructibles = Physics2D.OverlapCircleAll(m_AttackPoint.position, m_AttackRange, m_DestructibleLayers);
 
-        foreach(Collider2D enemy in hitEnemies)
+        foreach (Collider2D enemy in hitEnemies)
         {
             EnemyHealthController enemyHealthController = enemy.GetComponent<EnemyHealthController>();
 
@@ -37,6 +39,11 @@ public class PlayerCombatController : MonoBehaviour
             {
                 enemyHealthController.TakeDamage(m_AttackDamage);
             }
+        }
+
+        foreach(Collider2D destructible in hitDestructibles)
+        {
+            Destroy(destructible.gameObject);
         }
     }
 
