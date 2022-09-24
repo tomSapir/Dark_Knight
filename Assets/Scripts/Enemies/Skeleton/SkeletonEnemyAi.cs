@@ -1,16 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SkeletonEnemyAi : MonoBehaviour
 {
-    public float m_AttackDistance; // minimum distance to attack
-    public float m_MoveSpeed;
-    public float m_Timer; // timer for cooldown between attacks
-    public Transform m_LeftLimit, m_RightLimit;
+    [SerializeField] private float m_AttackDistance; // minimum distance to attack
+    [SerializeField] private float m_MoveSpeed;
+
+    private float m_Timer; // timer for cooldown between attacks
+
+    [SerializeField]  private Transform m_LeftLimit, m_RightLimit;
+
     [HideInInspector] public Transform m_Target;
     [HideInInspector] public bool m_IsPlayerInRange; // if player is in range
+
     public GameObject m_HotZone;
     public GameObject m_TriggerArea;
 
@@ -20,30 +21,38 @@ public class SkeletonEnemyAi : MonoBehaviour
     private bool m_IsInCooling; // if enemy is cooling after attack
     private float m_InitTimer;
 
+    public GameObject m_BloodEffect;
+
+    private EnemyHealthController m_EnemyHealthController;
+
     private void Awake()
     {
         SelectTarget();
         m_InitTimer = m_Timer; // store the initial value of the timer
         m_Animator = GetComponent<Animator>();
+        m_EnemyHealthController = GetComponent<EnemyHealthController>();
     }
 
     void Update()
     {
-        if(!m_IsInAttackMode)
+        if(m_EnemyHealthController.m_CurrentHealth > 0)
         {
-            move();
-        }
+            if (!m_IsInAttackMode)
+            {
+                move();
+            }
 
-        if(!IsInsideTheLimits() && !m_IsPlayerInRange 
-            && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Attack1") 
-            && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Attack2"))
-        {
-            SelectTarget();
-        }
+            if (!IsInsideTheLimits() && !m_IsPlayerInRange
+                && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Attack1")
+                && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Attack2"))
+            {
+                SelectTarget();
+            }
 
-        if(m_IsPlayerInRange)
-        {
-            enemyLogic();
+            if (m_IsPlayerInRange)
+            {
+                enemyLogic();
+            }
         }
     }
 
@@ -117,7 +126,6 @@ public class SkeletonEnemyAi : MonoBehaviour
       
         m_Animator.SetBool("CanWalk", false);
         m_Animator.SetBool("Attack", true);
-      
     }
 
     private void stopAttack()
@@ -130,12 +138,10 @@ public class SkeletonEnemyAi : MonoBehaviour
     private void coolDown()
     {
         m_Timer -= Time.deltaTime;
-
         if(m_Timer <= 0 && m_IsInCooling && m_IsInAttackMode)
         {
             m_IsInCooling = false;
             m_Timer = m_InitTimer;
-
         }
     }
 

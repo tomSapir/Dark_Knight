@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPatroller : MonoBehaviour
+public class EnemyCrabAi : MonoBehaviour
 {
     [SerializeField] private Animator m_Animator;
     [SerializeField] private Transform[] m_PatrolPoints;
