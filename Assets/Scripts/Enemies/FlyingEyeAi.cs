@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Pathfinding;
 
-public class FlyingEnemyAi : MonoBehaviour
+public class FlyingEyeAi : MonoBehaviour
 {
     private Animator m_Animator;
     [SerializeField] private Transform m_Target;
@@ -20,6 +20,9 @@ public class FlyingEnemyAi : MonoBehaviour
     [SerializeField] private int m_Damage = 10;
     [SerializeField] private bool m_PlayerInRange = false;
     [SerializeField] private bool m_CanAttack = true;
+
+    [SerializeField] private GameObject m_BloodEffect;
+    [SerializeField] private Transform m_BitePoint;
 
     void Start()
     {
@@ -41,7 +44,7 @@ public class FlyingEnemyAi : MonoBehaviour
 
     private void checkIfDied()
     {
-        if(transform.childCount == 0)
+        if(transform.childCount == 1)
         {
             Destroy(gameObject);
         }
@@ -68,6 +71,7 @@ public class FlyingEnemyAi : MonoBehaviour
         m_CanAttack = false;
         m_Animator.SetTrigger("Attack");
         yield return new WaitForSeconds(0.5f);
+        Instantiate(m_BloodEffect, m_BitePoint.position, m_BitePoint.rotation);
         GameObject.Find("Player").GetComponent<PlayerHealthController>().TakeDamage(m_Damage);
         yield return new WaitForSeconds(m_EnemyAttackCoolDown);
         m_CanAttack = true;
