@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,17 +11,6 @@ public class UIController : MonoBehaviour
     }
 
     [SerializeField] private Slider m_HealthSlider;
-
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-        
-
-    }
 
     public void UpdateHealth(int i_CurrentHealth, int i_MaxHealth)
     {

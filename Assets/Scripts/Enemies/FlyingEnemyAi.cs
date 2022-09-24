@@ -6,14 +6,14 @@ public class FlyingEnemyAi : MonoBehaviour
 {
     private Animator m_Animator;
     [SerializeField] private Transform m_Target;
-    [SerializeField] private float m_Speed;
-    [SerializeField] private float m_NextWayPointDistance = 3f;
+    [SerializeField] private float m_Speed = 200f;
+    [SerializeField] private float m_NextWayPointDistance = 1.5f;
     [SerializeField] private Transform m_EnemyGFX;
     private Rigidbody2D m_RigidBody;
 
-    [SerializeField] private Path m_Path;
+    private Path m_Path;
     [SerializeField] private int m_CurrentWayPoint = 0;
-    [SerializeField] private bool m_ReachedEndOfPath = false;
+    private bool m_ReachedEndOfPath = false;
     private Seeker m_Seeker;
 
     [SerializeField] private float m_EnemyAttackCoolDown = 1f;
@@ -24,7 +24,6 @@ public class FlyingEnemyAi : MonoBehaviour
     void Start()
     {
         m_Animator = gameObject.GetComponentInChildren<Animator>();
-        //m_Target = GameObject.Find("Player").transform;
         m_Seeker = GetComponent<Seeker>();
         m_RigidBody = GetComponent<Rigidbody2D>();
         InvokeRepeating("updatePath", 0f, .5f);
@@ -32,10 +31,19 @@ public class FlyingEnemyAi : MonoBehaviour
 
     void Update()
     {
-        
         if (m_PlayerInRange && m_CanAttack)
         {
             StartCoroutine(AttackPlayer());
+        }
+
+        checkIfDied();
+    }
+
+    private void checkIfDied()
+    {
+        if(transform.childCount == 0)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -73,11 +81,11 @@ public class FlyingEnemyAi : MonoBehaviour
         }
     }
 
-    private void onPathComplete(Path path)
+    private void onPathComplete(Path i_Path)
     {
-        if(!path.error)
+        if(!i_Path.error)
         {
-            m_Path = path;
+            m_Path = i_Path;
             m_CurrentWayPoint = 0;
         }
     }
@@ -110,16 +118,16 @@ public class FlyingEnemyAi : MonoBehaviour
             m_CurrentWayPoint++;
         }
 
-        updateFlip();
+        updateFlip(force);
     }
 
-    private void updateFlip()
+    private void updateFlip(Vector2 i_Force)
     {
-        if (m_RigidBody.velocity.x >= 0.001f)
+        if (i_Force.x >= 0.001f)
         {
             m_EnemyGFX.localScale = new Vector3(1f, 1f, 1f);
         }
-        else if (m_RigidBody.velocity.x <= -0.001f)
+        else if (i_Force.x <= -0.001f)
         {
             m_EnemyGFX.localScale = new Vector3(-1f, 1f, 1f);
         }

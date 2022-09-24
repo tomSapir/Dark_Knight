@@ -6,7 +6,6 @@ public class EnemyHealthController : MonoBehaviour
     [SerializeField] private Animator m_Animator;
     [SerializeField] private int m_MaxHealth = 100;
     [SerializeField] private int m_CurrentHealth;
-    [SerializeField] private GameObject m_DeathEffect;
 
     void Start()
     {
@@ -28,11 +27,6 @@ public class EnemyHealthController : MonoBehaviour
 
         if(m_CurrentHealth <= 0)
         {
-            if(m_DeathEffect != null)
-            {
-                Instantiate(m_DeathEffect, transform.position, transform.rotation);
-            }
-
             die();
         }
     }
@@ -40,6 +34,11 @@ public class EnemyHealthController : MonoBehaviour
     private void die()
     {
         m_Animator.SetBool("IsDead", true);
+
+        // play animation one time
+        // fall down
+        // dont move sideways
+        // when on the ground destroy
     }
 }
 
