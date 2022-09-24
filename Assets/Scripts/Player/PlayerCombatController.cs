@@ -33,11 +33,11 @@ public class PlayerCombatController : MonoBehaviour
 
             if(enemyHealthController == null)
             {
-                enemy.GetComponentInParent<EnemyHealthController>().TakeDamage(m_AttackDamage);
+                enemy.GetComponentInParent<EnemyHealthController>().DamageEnemy(m_AttackDamage);
             }
             else
             {
-                enemyHealthController.TakeDamage(m_AttackDamage);
+                enemyHealthController.DamageEnemy(m_AttackDamage);
             }
         }
 
