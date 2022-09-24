@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyHealthController : MonoBehaviour
@@ -15,9 +16,23 @@ public class EnemyHealthController : MonoBehaviour
     public void DamageEnemy(int i_DamageAmount)
     {
         m_CurrentHealth -= i_DamageAmount;
-        m_Animator.SetTrigger("Hurt");
+
+        try
+        {
+            m_Animator.SetTrigger("Hurt");
+        }
+        catch(Exception exp)
+        {
+            Debug.Log(exp.Message);
+        }
+
         if(m_CurrentHealth <= 0)
         {
+            if(m_DeathEffect != null)
+            {
+                Instantiate(m_DeathEffect, transform.position, transform.rotation);
+            }
+
             die();
         }
     }

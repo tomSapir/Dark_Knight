@@ -4,51 +4,27 @@ using Pathfinding;
 
 public class FlyingEnemyAi : MonoBehaviour
 {
-    [SerializeField] private Animator m_Animator;
-
+    private Animator m_Animator;
     [SerializeField] private Transform m_Target;
     [SerializeField] private float m_Speed;
     [SerializeField] private float m_NextWayPointDistance = 3f;
     [SerializeField] private Transform m_EnemyGFX;
-    [SerializeField] private Rigidbody2D m_RigidBody;
+    private Rigidbody2D m_RigidBody;
 
     [SerializeField] private Path m_Path;
     [SerializeField] private int m_CurrentWayPoint = 0;
     [SerializeField] private bool m_ReachedEndOfPath = false;
-    [SerializeField] private Seeker m_Seeker;
+    private Seeker m_Seeker;
 
     [SerializeField] private float m_EnemyAttackCoolDown = 1f;
     [SerializeField] private int m_Damage = 10;
     [SerializeField] private bool m_PlayerInRange = false;
     [SerializeField] private bool m_CanAttack = true;
-    [SerializeField] private int m_MaxAttackIndex;
-    [SerializeField] private int m_AttackIndex = 1;
-
-    public int AttackIndex
-    {
-        get
-        {
-            return m_AttackIndex;
-        }
-        set
-        {
-            if(value == m_MaxAttackIndex + 1)
-            {
-                m_AttackIndex = 1;
-            }
-            else if(value == 0)
-            {
-                m_AttackIndex = m_MaxAttackIndex;
-            }
-            else
-            {
-                m_AttackIndex = value;
-            }
-        }
-    }
 
     void Start()
     {
+        m_Animator = gameObject.GetComponentInChildren<Animator>();
+        //m_Target = GameObject.Find("Player").transform;
         m_Seeker = GetComponent<Seeker>();
         m_RigidBody = GetComponent<Rigidbody2D>();
         InvokeRepeating("updatePath", 0f, .5f);
@@ -56,7 +32,8 @@ public class FlyingEnemyAi : MonoBehaviour
 
     void Update()
     {
-        if(m_PlayerInRange && m_CanAttack)
+        
+        if (m_PlayerInRange && m_CanAttack)
         {
             StartCoroutine(AttackPlayer());
         }
@@ -82,9 +59,8 @@ public class FlyingEnemyAi : MonoBehaviour
     {
         m_CanAttack = false;
         m_Animator.SetTrigger("Attack");
-        m_Animator.SetInteger("AttackIndex", AttackIndex++);
         yield return new WaitForSeconds(0.5f);
-        GameObject.Find("Player").GetComponent<PlayerController>().TakeDamage(m_Damage);
+        GameObject.Find("Player").GetComponent<PlayerHealthController>().TakeDamage(m_Damage);
         yield return new WaitForSeconds(m_EnemyAttackCoolDown);
         m_CanAttack = true;
     }
@@ -139,11 +115,11 @@ public class FlyingEnemyAi : MonoBehaviour
 
     private void updateFlip()
     {
-        if (m_RigidBody.velocity.x >= 0.01f)
+        if (m_RigidBody.velocity.x >= 0.001f)
         {
             m_EnemyGFX.localScale = new Vector3(1f, 1f, 1f);
         }
-        else if (m_RigidBody.velocity.x <= -0.01f)
+        else if (m_RigidBody.velocity.x <= -0.001f)
         {
             m_EnemyGFX.localScale = new Vector3(-1f, 1f, 1f);
         }

@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer m_SpriteRenderer;
     private PlayerAbillityTracker m_PlayerAbillityTracker;
 
-
     [SerializeField] private float m_MoveSpeed = 8f;
     [SerializeField] private float m_JumpForce = 20f;
 
@@ -19,10 +18,6 @@ public class PlayerController : MonoBehaviour
 
     // ******************* Double Jump *******************
     private bool m_CanDoubleJump;
-
-    // ******************* Health *******************
-    [SerializeField] private int m_MaxHealth = 100;
-    [SerializeField] private int m_CurrentHealth;
 
     // ******************* Attack Flags *******************
     private bool m_IsAttacking = false;
@@ -44,7 +39,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        m_CurrentHealth = m_MaxHealth;
         m_PlayerAbillityTracker = GetComponent<PlayerAbillityTracker>();
     }
 
@@ -107,22 +101,6 @@ public class PlayerController : MonoBehaviour
     private void updateIsGroundAttacking()
     {
         m_IsGroundAttacking = m_IsOnGround && m_IsAttacking;
-    }
-
-    public void TakeDamage(int i_Damage)
-    {
-        m_CurrentHealth -= i_Damage;
-        m_Animator.SetTrigger("Hurt");
-
-        if (m_CurrentHealth <= 0)
-        {
-            die();
-        }
-    }
-
-    private void die()
-    {
-        throw new NotImplementedException();
     }
 
     private void handleSpeed()
