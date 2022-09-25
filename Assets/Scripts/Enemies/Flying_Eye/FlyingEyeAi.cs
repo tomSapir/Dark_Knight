@@ -70,8 +70,7 @@ public class FlyingEyeAi : MonoBehaviour
     {
         m_CanAttack = false;
         m_Animator.SetTrigger("Attack");
-        yield return new WaitForSeconds(0.5f);
-        Instantiate(m_BloodEffect, m_BitePoint.position, m_BitePoint.rotation);
+        yield return new WaitForSeconds(0.3f);
         GameObject.Find("Player").GetComponent<PlayerHealthController>().TakeDamage(m_Damage);
         yield return new WaitForSeconds(m_EnemyAttackCoolDown);
         m_CanAttack = true;

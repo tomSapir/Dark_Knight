@@ -6,6 +6,7 @@ public class PlayerHealthController : MonoBehaviour
     [SerializeField] private Animator m_Animator;
     [SerializeField] private int m_MaxHealth = 100;
     [SerializeField] private int m_CurrentHealth;
+    [SerializeField] private GameObject m_BloodEffect;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class PlayerHealthController : MonoBehaviour
 
         m_CurrentHealth -= i_Damage;
         m_Animator.SetTrigger("Hurt");
+        Instantiate(m_BloodEffect, transform.position, transform.rotation);
         if (m_CurrentHealth <= 0)
         {
             die();

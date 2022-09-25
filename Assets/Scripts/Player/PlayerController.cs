@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // ******************* Main Components *******************
     [SerializeField] private Rigidbody2D m_RigidBody;
     [SerializeField] private Animator m_Animator;
     [SerializeField] private SpriteRenderer m_SpriteRenderer;
@@ -16,15 +15,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask m_WhatIsGround;
     private bool m_IsOnGround;
 
-    // ******************* Double Jump *******************
     private bool m_CanDoubleJump;
 
-    // ******************* Attack Flags *******************
     private bool m_IsAttacking = false;
     private bool m_IsAirAttacking = false;
     private bool m_IsGroundAttacking = false;
 
-    // ******************* Dash *******************
     [SerializeField] private float m_DashSpeed;
     [SerializeField] private float m_DashTime;
     private float m_DashCounter;
@@ -44,27 +40,38 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(m_DashRechargeCounter > 0)
+
+        handleDash();
+        updateIsAttacking();
+        handleSpeed();
+        handleMoveSideways();
+        handleDirectionChange();
+        checkIfOnTheGround();
+        handleJumping();
+        updateAnimationsParameters();
+        updateCanDoubleJump();
+    }
+
+    private void handleDash()
+    {
+        // if we are in the middle of cooling from last dash:
+        if (m_DashRechargeCounter > 0)
         {
             m_DashRechargeCounter -= Time.deltaTime;
         }
         else
         {
-            if (Input.GetButtonDown("Fire2") && m_PlayerAbillityTracker.m_CanDash) // dashing
+            if (Input.GetButtonDown("Fire2") && m_PlayerAbillityTracker.m_CanDash)
             {
-                m_Animator.SetTrigger("Dash");
-                m_IsDashing = true;
-                m_DashCounter = m_DashTime;
-                showAfterImage();
+                dash();
             }
         }
 
-        if(m_DashCounter > 0) // in the middle of a dash
+        if (m_DashCounter > 0) // in the middle of a dash
         {
             m_DashCounter = m_DashCounter - Time.deltaTime;
-
             m_AfterImageCounter -= Time.deltaTime;
-            if(m_AfterImageCounter <= 0)
+            if (m_AfterImageCounter <= 0)
             {
                 showAfterImage();
             }
@@ -75,15 +82,14 @@ public class PlayerController : MonoBehaviour
         {
             m_IsDashing = false;
         }
+    }
 
-        updateIsAttacking();
-        handleSpeed();
-        handleMoveSideways();
-        handleDirectionChange();
-        checkIfOnTheGround();
-        handleJumping();
-        updateAnimationsParameters();
-        updateCanDoubleJump();
+    private void dash()
+    {
+        m_Animator.SetTrigger("Dash");
+        m_IsDashing = true;
+        m_DashCounter = m_DashTime;
+        showAfterImage();
     }
 
     private void updateIsAttacking()

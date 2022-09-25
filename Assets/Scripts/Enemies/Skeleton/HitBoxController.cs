@@ -4,7 +4,6 @@ using UnityEngine;
 public class HitBoxController : MonoBehaviour
 {
     [SerializeField] private int m_DamageToPlayer;
-    [SerializeField] private GameObject m_BloodEffect;
 
     void OnTriggerEnter2D(Collider2D i_Other)
     {
@@ -18,7 +17,6 @@ public class HitBoxController : MonoBehaviour
     IEnumerator AttackPlayer()
     {
         yield return new WaitForSeconds(0.2f);
-        Instantiate(m_BloodEffect, transform.position, transform.rotation);
         GameObject.Find("Player").GetComponent<PlayerHealthController>().TakeDamage(m_DamageToPlayer);
     }
 }

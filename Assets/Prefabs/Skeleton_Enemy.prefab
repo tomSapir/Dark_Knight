@@ -81,6 +81,7 @@ GameObject:
   m_Component:
   - component: {fileID: 248843741765307230}
   - component: {fileID: 248843741765307231}
+  - component: {fileID: 1661449544}
   m_Layer: 7
   m_Name: Hit_Box
   m_TagString: Untagged
@@ -129,6 +130,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1998408, y: 0.16632622}
   m_EdgeRadius: 0
+--- !u!114 &1661449544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248843741765307229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cbb16e725f6a1844aa3959934744e3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DamageToPlayer: 10
 --- !u!1 &248843741798898666
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +345,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 20
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -351,13 +365,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AttackDistance: 4
   m_MoveSpeed: 2
-  m_Timer: 0
   m_LeftLimit: {fileID: 0}
   m_RightLimit: {fileID: 0}
   m_Target: {fileID: 0}
   m_IsPlayerInRange: 0
   m_HotZone: {fileID: 248843741798898666}
   m_TriggerArea: {fileID: 248843741508098276}
+  m_BloodEffect: {fileID: 3249569771820457445, guid: 92068cb074e569247a0e088152b26ed5, type: 3}
 --- !u!114 &248843742268835319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,9 +384,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a3f84d0dc3dd7448a2f8a86ec64b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Animator: {fileID: 0}
+  m_Animator: {fileID: 248843742268835314}
   m_MaxHealth: 100
   m_CurrentHealth: 0
+  m_BloodEffect: {fileID: 3249569771820457445, guid: 92068cb074e569247a0e088152b26ed5, type: 3}
 --- !u!95 &248843742268835314
 Animator:
   serializedVersion: 4
@@ -431,8 +446,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1620331445
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

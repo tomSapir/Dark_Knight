@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3655224530435343562}
   - component: {fileID: 3655224530435343541}
   - component: {fileID: 1208408606449459188}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Flying_Eye_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5688647543316288065}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Bite_Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 2313730637665487828}
   - component: {fileID: 6206850295908993916}
   - component: {fileID: 2910724288251317075}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Flying_Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,13 +11,13 @@ TagManager:
   - No Collisions
   - Water
   - UI
-  - Ground
-  - Enemies
+  - 
+  - 
   - Player
   - Pickups
   - Destructible
-  - 
-  - 
+  - Enemies
+  - Ground
   - 
   - 
   - 

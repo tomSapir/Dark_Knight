@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4025752746186172923}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Patrol_point
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4025752746186172922}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.89, y: -5.31, z: 0}
+  m_LocalPosition: {x: 17.02, y: -5.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4025752746465458405}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Patrol_point
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -75,13 +75,13 @@ GameObject:
   - component: {fileID: 4025752746809400715}
   - component: {fileID: 4025752746809400726}
   - component: {fileID: 4025752746809400727}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Crab_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4025752746809400725
 Transform:
   m_ObjectHideFlags: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Animator: {fileID: 4025752747762942480}
   m_MaxHealth: 100
   m_CurrentHealth: 0
-  m_DeathEffect: {fileID: 3015125580040405659, guid: 897d113537fa9f043a84266b7438d516, type: 3}
+  m_BloodEffect: {fileID: 3249569771820457445, guid: 92068cb074e569247a0e088152b26ed5, type: 3}
 --- !u!1 &4025752747230870277
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +183,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4025752747230870278}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Patrol_Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4025752747444556801}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Patrol_point
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -232,7 +232,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4025752747444556800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.94, y: -5.2199993, z: 0}
+  m_LocalPosition: {x: -20.06, y: -5.2199993, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 4025752747762942487}
   - component: {fileID: 4025752747762942481}
   - component: {fileID: 4025752747762942480}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Crab_Enemy_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,8 +310,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1620331445
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -3742267620615937493, guid: 94672c82a939e214692c5058d496b38e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
