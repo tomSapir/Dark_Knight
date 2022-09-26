@@ -52,11 +52,10 @@ public class DoorController : MonoBehaviour
     IEnumerator UseDoorCorutine()
     {
         m_PlayerExiting = true;
-        yield return new WaitForSeconds(1.5f);
-
+        yield return new WaitForSeconds(4f);
         RespawnController.m_Instance.SetSpawn(m_ExitPoint.position);
         m_Player.CanMove = true;
-
         SceneManager.LoadScene(m_LevelToLoad);
+        //RespawnController.m_Instance.Respawn();
     }
 }

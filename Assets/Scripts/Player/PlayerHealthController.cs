@@ -7,6 +7,7 @@ public class PlayerHealthController : MonoBehaviour
 
     void Awake()
     {
+    
         if(m_Instance == null)
         {
             m_Instance = this;
@@ -45,6 +46,7 @@ public class PlayerHealthController : MonoBehaviour
     private void die()
     {
         m_Animator.SetTrigger("Die");
+     
         RespawnController.m_Instance.Respawn();
     }
 

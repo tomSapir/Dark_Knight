@@ -80,7 +80,7 @@ MonoBehaviour:
   m_GroundCheckPoint: {fileID: 696843859715585678}
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 1088
+    m_Bits: 4160
   m_DashSpeed: 20
   m_DashTime: 0.2
   m_AfterImage: {fileID: 6243850893491952078, guid: 8ff09164ef68f424790cc57736989a3d, type: 3}

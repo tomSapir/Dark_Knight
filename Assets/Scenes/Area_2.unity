@@ -633,7 +633,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 458213957153535245, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
       propertyPath: m_LevelToLoad
-      value: Area_2
+      value: Area_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 458213957206904909, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.36
       objectReference: {fileID: 0}
     - target: {fileID: 458213957768996743, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
       propertyPath: m_Size.x
@@ -653,7 +657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 458213958061578555, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 101.21
+      value: 94.19
       objectReference: {fileID: 0}
     - target: {fileID: 458213958061578555, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5454,18 +5458,6 @@ PrefabInstance:
     - target: {fileID: 696843859328629219, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 696843859328629220, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_WhatIsGround.m_Bits
-      value: 4160
-      objectReference: {fileID: 0}
-    - target: {fileID: 696843859328629221, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_EnemyLayers.m_Bits
-      value: 2176
-      objectReference: {fileID: 0}
-    - target: {fileID: 696843859328629221, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_DestructibleLayers.m_Bits
-      value: 1024
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
