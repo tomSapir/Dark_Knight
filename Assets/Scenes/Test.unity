@@ -7632,27 +7632,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &618715548 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 696843859328629217, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-  m_PrefabInstance: {fileID: 696843859124684560}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &618715553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 618715548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9354bc9c008ac1419f151712c952783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Animator: {fileID: 1510552806}
-  m_MaxHealth: 100
-  m_CurrentHealth: 0
-  m_BloodEffect: {fileID: 3249569771820457445, guid: 92068cb074e569247a0e088152b26ed5, type: 3}
 --- !u!4 &618715558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 696843859328629219, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
@@ -8451,11 +8430,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99562fcb55c931340a28b27d1eb88d6a, type: 3}
---- !u!95 &1510552806 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 696843860050729128, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-  m_PrefabInstance: {fileID: 696843859124684560}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1515943942
 GameObject:
   m_ObjectHideFlags: 0
@@ -9196,33 +9170,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1596685450, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_CanDash
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1596685450, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_CanDoubleJump
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 696843859328629217, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 696843859328629217, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 696843859328629219, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 696843859328629219, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 696843859328629219, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 696843859328629219, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9262,30 +9216,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 696843859328629219, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 696843859328629220, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_WhatIsGround.m_Bits
-      value: 1088
-      objectReference: {fileID: 0}
-    - target: {fileID: 696843859328629221, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_EnemyLayers.m_Bits
-      value: 2176
-      objectReference: {fileID: 0}
-    - target: {fileID: 696843859328629221, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_DestructibleLayers.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
-    - target: {fileID: 696843859665280196, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.993
-      objectReference: {fileID: 0}
-    - target: {fileID: 696843859665280196, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.203
-      objectReference: {fileID: 0}
-    - target: {fileID: 696843860050729126, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

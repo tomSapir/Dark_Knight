@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 696843859328629220}
   - component: {fileID: 696843859328629221}
   - component: {fileID: 1596685450}
+  - component: {fileID: 618715553}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 696843859328629217}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.46, y: -3.4, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 696843860050729125}
@@ -79,9 +80,7 @@ MonoBehaviour:
   m_GroundCheckPoint: {fileID: 696843859715585678}
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 64
-  m_MaxHealth: 100
-  m_CurrentHealth: 0
+    m_Bits: 1088
   m_DashSpeed: 20
   m_DashTime: 0.2
   m_AfterImage: {fileID: 6243850893491952078, guid: 8ff09164ef68f424790cc57736989a3d, type: 3}
@@ -106,7 +105,10 @@ MonoBehaviour:
   m_AttackRange: 1.5
   m_EnemyLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 2176
+  m_DestructibleLayers:
+    serializedVersion: 2
+    m_Bits: 1024
   m_AttackDamage: 20
 --- !u!114 &1596685450
 MonoBehaviour:
@@ -120,8 +122,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10695051579f15d4693d5ed8c7c81158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CanDoubleJump: 1
-  m_CanDash: 1
+  m_CanDoubleJump: 0
+  m_CanDash: 0
+--- !u!114 &618715553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696843859328629217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9354bc9c008ac1419f151712c952783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 696843860050729128}
+  m_MaxHealth: 100
+  m_CurrentHealth: 0
+  m_BloodEffect: {fileID: 3249569771820457445, guid: 92068cb074e569247a0e088152b26ed5, type: 3}
 --- !u!1 &696843859665280195
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,7 +164,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696843859665280195}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.07, y: 0.03, z: 0}
+  m_LocalPosition: {x: 0.993, y: 0.203, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
