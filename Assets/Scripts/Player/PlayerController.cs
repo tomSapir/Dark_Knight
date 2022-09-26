@@ -191,7 +191,8 @@ public class PlayerController : MonoBehaviour
         m_Animator.SetBool("IsOnGround", m_IsOnGround);
         m_Animator.SetFloat("Speed", Mathf.Abs(m_RigidBody.velocity.x));
 
-        if(Input.GetKey(KeyCode.LeftShift) && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Crouch") && !m_IsDashing && m_RigidBody.velocity.x != 0f)
+        if(Input.GetKey(KeyCode.LeftShift) && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Crouch") 
+            && !m_IsDashing && m_RigidBody.velocity.x != 0f)
         {
             m_Animator.SetBool("IsRunning", true);
         }
