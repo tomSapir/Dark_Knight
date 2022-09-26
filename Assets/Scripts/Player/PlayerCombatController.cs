@@ -22,11 +22,9 @@ public class PlayerCombatController : MonoBehaviour
 
     private void Attack()
     {
-        m_Animator.SetTrigger("Attack");
-
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(m_AttackPoint.position, m_AttackRange, m_EnemyLayers);
-        Collider2D[] hitDestructibles = Physics2D.OverlapCircleAll(m_AttackPoint.position, m_AttackRange, m_DestructibleLayers);
 
+        m_Animator.SetTrigger("Attack");
         foreach (Collider2D enemy in hitEnemies)
         {
             EnemyHealthController enemyHealthController = enemy.GetComponent<EnemyHealthController>();
@@ -39,11 +37,6 @@ public class PlayerCombatController : MonoBehaviour
             {
                 enemyHealthController.DamageEnemy(m_AttackDamage);
             }
-        }
-
-        foreach(Collider2D destructible in hitDestructibles)
-        {
-            Destroy(destructible.gameObject);
         }
     }
 

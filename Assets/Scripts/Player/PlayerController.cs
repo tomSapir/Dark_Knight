@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D m_RigidBody;
     public Animator m_Animator;
+    [SerializeField] private Rigidbody2D m_RigidBody;
     [SerializeField] private SpriteRenderer m_SpriteRenderer;
     private PlayerAbillityTracker m_PlayerAbillityTracker;
 
