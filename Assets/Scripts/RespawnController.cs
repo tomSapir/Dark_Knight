@@ -38,6 +38,7 @@ public class RespawnController : MonoBehaviour
 
     IEnumerator RespawnCorutine()
     {
+        m_Player.GetComponent<PlayerController>().CanMove = false;
         yield return new WaitForSeconds(1f);
         m_Player.SetActive(false);
 
@@ -48,6 +49,7 @@ public class RespawnController : MonoBehaviour
         m_Player.transform.position = m_RespawnPoint;
 
         m_Player.SetActive(true);
+        m_Player.GetComponent<PlayerController>().CanMove = true;
 
         PlayerHealthController.m_Instance.FillHealth();
     }

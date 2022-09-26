@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D m_RigidBody;
-    [SerializeField] private Animator m_Animator;
+    public Animator m_Animator;
     [SerializeField] private SpriteRenderer m_SpriteRenderer;
     private PlayerAbillityTracker m_PlayerAbillityTracker;
 
@@ -33,14 +33,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_TimeToWaitAfterDashing;
     private float m_DashRechargeCounter;
 
+    public bool CanMove { get; set; }
+
     private void Start()
     {
         m_PlayerAbillityTracker = GetComponent<PlayerAbillityTracker>();
+        CanMove = true;
     }
 
     void Update()
     {
-        if(PlayerHealthController.m_Instance.m_CurrentHealth > 0)
+        if(CanMove)
         {
             handleDash();
             updateIsAttacking();
@@ -51,6 +54,10 @@ public class PlayerController : MonoBehaviour
             handleJumping();
             updateAnimationsParameters();
             updateCanDoubleJump();
+        }
+        else
+        {
+            m_RigidBody.velocity = Vector2.zero;
         }
     }
 
