@@ -40,16 +40,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
-        handleDash();
-        updateIsAttacking();
-        handleSpeed();
-        handleMoveSideways();
-        handleDirectionChange();
-        checkIfOnTheGround();
-        handleJumping();
-        updateAnimationsParameters();
-        updateCanDoubleJump();
+        if(PlayerHealthController.m_Instance.m_CurrentHealth > 0)
+        {
+            handleDash();
+            updateIsAttacking();
+            handleSpeed();
+            handleMoveSideways();
+            handleDirectionChange();
+            checkIfOnTheGround();
+            handleJumping();
+            updateAnimationsParameters();
+            updateCanDoubleJump();
+        }
     }
 
     private void handleDash()

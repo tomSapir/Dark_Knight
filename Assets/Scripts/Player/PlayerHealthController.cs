@@ -20,7 +20,7 @@ public class PlayerHealthController : MonoBehaviour
 
     [SerializeField] private Animator m_Animator;
     [SerializeField] private int m_MaxHealth = 100;
-    [SerializeField] private int m_CurrentHealth;
+    public int m_CurrentHealth;
     [SerializeField] private GameObject m_BloodEffect;
 
     void Start()
@@ -44,13 +44,24 @@ public class PlayerHealthController : MonoBehaviour
 
     private void die()
     {
-        Debug.Log("m_Instance = " + RespawnController.m_Instance + "  in PlayerHealthController");
+        m_Animator.SetTrigger("Die");
         RespawnController.m_Instance.Respawn();
     }
 
     public void FillHealth()
     {
         m_CurrentHealth = m_MaxHealth;
+        UIController.m_Instance.UpdateHealth(m_CurrentHealth, m_MaxHealth);
+    }
+
+    public void HealPlayer(int i_HealAmount)
+    {
+        m_CurrentHealth += i_HealAmount;
+        if(m_CurrentHealth > m_MaxHealth)
+        {
+            m_CurrentHealth = m_MaxHealth;
+        }
+
         UIController.m_Instance.UpdateHealth(m_CurrentHealth, m_MaxHealth);
     }
 }

@@ -38,6 +38,7 @@ public class RespawnController : MonoBehaviour
 
     IEnumerator RespawnCorutine()
     {
+        yield return new WaitForSeconds(1f);
         m_Player.SetActive(false);
 
         yield return new WaitForSeconds(m_WaitToRespawn);
@@ -49,5 +50,10 @@ public class RespawnController : MonoBehaviour
         m_Player.SetActive(true);
 
         PlayerHealthController.m_Instance.FillHealth();
+    }
+
+    public void SetSpawn(Vector3 i_NewPosition)
+    {
+        m_RespawnPoint = i_NewPosition;
     }
 }

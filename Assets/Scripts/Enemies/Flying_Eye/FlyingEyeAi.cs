@@ -26,6 +26,7 @@ public class FlyingEyeAi : MonoBehaviour
 
     void Start()
     {
+        m_Target = GameObject.Find("Player").transform;
         m_Animator = gameObject.GetComponentInChildren<Animator>();
         m_Seeker = GetComponent<Seeker>();
         m_RigidBody = GetComponent<Rigidbody2D>();
