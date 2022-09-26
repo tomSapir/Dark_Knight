@@ -7,7 +7,15 @@ public class UIController : MonoBehaviour
 
     void Awake()
     {
-        m_Instance = this;
+        if (m_Instance == null)
+        {
+            m_Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     [SerializeField] private Slider m_HealthSlider;

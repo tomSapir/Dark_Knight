@@ -3,6 +3,21 @@ using UnityEngine;
 
 public class PlayerHealthController : MonoBehaviour
 {
+    public static PlayerHealthController m_Instance;
+
+    void Awake()
+    {
+        if(m_Instance == null)
+        {
+            m_Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     [SerializeField] private Animator m_Animator;
     [SerializeField] private int m_MaxHealth = 100;
     [SerializeField] private int m_CurrentHealth;
@@ -29,6 +44,13 @@ public class PlayerHealthController : MonoBehaviour
 
     private void die()
     {
-        throw new NotImplementedException();
+        Debug.Log("m_Instance = " + RespawnController.m_Instance + "  in PlayerHealthController");
+        RespawnController.m_Instance.Respawn();
+    }
+
+    public void FillHealth()
+    {
+        m_CurrentHealth = m_MaxHealth;
+        UIController.m_Instance.UpdateHealth(m_CurrentHealth, m_MaxHealth);
     }
 }
