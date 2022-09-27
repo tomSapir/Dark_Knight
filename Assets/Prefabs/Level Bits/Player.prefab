@@ -72,8 +72,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce0d7ce45e518247a482676fa439578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RigidBody: {fileID: 696843859328629218}
   m_Animator: {fileID: 696843860050729128}
+  m_RigidBody: {fileID: 696843859328629218}
   m_SpriteRenderer: {fileID: 696843860050729127}
   m_MoveSpeed: 8
   m_JumpForce: 20
@@ -138,8 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 696843860050729128}
   m_MaxHealth: 100
-  m_CurrentHealth: 0
   m_BloodEffect: {fileID: 3249569771820457445, guid: 92068cb074e569247a0e088152b26ed5, type: 3}
+  m_CurrentHealth: 0
 --- !u!1 &696843859665280195
 GameObject:
   m_ObjectHideFlags: 0

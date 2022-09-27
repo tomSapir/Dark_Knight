@@ -27498,18 +27498,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 696843859328629220, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_WhatIsGround.m_Bits
-      value: 4160
-      objectReference: {fileID: 0}
-    - target: {fileID: 696843859328629221, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_EnemyLayers.m_Bits
-      value: 2176
-      objectReference: {fileID: 0}
-    - target: {fileID: 696843859328629221, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
-      propertyPath: m_DestructibleLayers.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
 --- !u!1 &1921791896

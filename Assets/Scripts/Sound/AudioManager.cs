@@ -43,4 +43,16 @@ public class AudioManager : MonoBehaviour
         m_LevelMusic.Stop();
         m_BossMusic.Play();
     }
+
+    public void PlaySFX(int i_SFXIndex)
+    {
+        m_SFX[i_SFXIndex].Stop();
+        m_SFX[i_SFXIndex].Play();
+    }
+    public void PlaySFXAdjusted(int i_SFXAdjust)
+    {
+        m_SFX[i_SFXAdjust].pitch = Random.Range(.8f, 1.2f);
+        PlaySFX(i_SFXAdjust);
+    }
+
 }

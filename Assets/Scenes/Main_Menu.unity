@@ -1826,10 +1826,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bb268653fe67847921886301eed70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MainMenuMusic: {fileID: 0}
-  m_LevelMusic: {fileID: 0}
-  m_BossMusic: {fileID: 0}
-  m_SFX: []
+  m_MainMenuMusic: {fileID: 1151528875}
+  m_LevelMusic: {fileID: 1868219243}
+  m_BossMusic: {fileID: 2013213158}
+  m_SFX:
+  - {fileID: 2074894886}
+  - {fileID: 1554968485}
+  - {fileID: 260095903}
+  - {fileID: 468047111}
+  - {fileID: 1719151539}
+  - {fileID: 580791412}
+  - {fileID: 657877230}
+  - {fileID: 1672727163}
+  - {fileID: 963619251}
+  - {fileID: 797267207}
+  - {fileID: 675127198}
+  - {fileID: 1758874137}
+  - {fileID: 571907411}
+  - {fileID: 1127780608}
+  - {fileID: 1731523572}
 --- !u!1 &1299204224
 GameObject:
   m_ObjectHideFlags: 0
