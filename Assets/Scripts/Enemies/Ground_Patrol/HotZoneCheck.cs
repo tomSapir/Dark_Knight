@@ -1,23 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HotZoneCheck : MonoBehaviour
 {
-    private SkeletonEnemyAi m_EnemyParent;
+    private GroundPatrolEnemyAi m_EnemyParent;
     private bool m_PlayerInRange;
     private Animator m_Animator;
 
     void Awake()
     {
-        m_EnemyParent = GetComponentInParent<SkeletonEnemyAi>();
+        m_EnemyParent = GetComponentInParent<GroundPatrolEnemyAi>();
         m_Animator = GetComponentInParent<Animator>();
     }
 
     void Update()
     {
-        if(m_PlayerInRange && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Attack1") 
-            && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Attack2"))
+        if(m_PlayerInRange && !m_EnemyParent.IsInAttackAnimation())
         {
             m_EnemyParent.Flip();
         }

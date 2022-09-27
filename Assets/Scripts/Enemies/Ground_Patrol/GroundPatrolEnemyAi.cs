@@ -1,35 +1,31 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class MushroomAi : MonoBehaviour
+public class GroundPatrolEnemyAi : MonoBehaviour
 {
     [SerializeField] private float m_AttackDistance; // minimum distance to attack
     [SerializeField] private float m_MoveSpeed;
-
-    private float m_Timer; // timer for cooldown between attacks
-
     [SerializeField] private Transform m_LeftLimit, m_RightLimit;
+    [SerializeField] private Animator m_Animator;
+    [SerializeField] private GameObject m_BloodEffect;
+    [SerializeField] private List<string> m_AttackAnimationsNames;
 
     public Transform m_Target;
-    [HideInInspector] public bool m_IsPlayerInRange; // if player is in range
-
+    public bool m_IsPlayerInRange; // if player is in range
     public GameObject m_HotZone;
     public GameObject m_TriggerArea;
-
-    private Animator m_Animator;
-    private float m_DistanceFromPlayer;
     public bool m_IsInAttackMode;
-    private bool m_IsInCooling; // if enemy is cooling after attack
+
+    private float m_Timer;
     private float m_InitTimer;
-
-    public GameObject m_BloodEffect;
-
+    private float m_DistanceFromPlayer;
+    private bool m_IsInCooling;
     private EnemyHealthController m_EnemyHealthController;
 
     void Awake()
     {
         SelectTarget();
-        m_InitTimer = m_Timer; // store the initial value of the timer
+        m_InitTimer = m_Timer; 
         m_Animator = GetComponent<Animator>();
         m_EnemyHealthController = GetComponent<EnemyHealthController>();
     }
@@ -44,10 +40,9 @@ public class MushroomAi : MonoBehaviour
                 move();
             }
 
-            if (!IsInsideTheLimits() && !m_IsPlayerInRange
-                && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Mushroom_Attack1"))
+            if(!IsInsideTheLimits() && !m_IsPlayerInRange && !IsInAttackAnimation())
             {
-                SelectTarget();
+                    SelectTarget();
             }
 
             if (m_IsPlayerInRange)
@@ -114,12 +109,25 @@ public class MushroomAi : MonoBehaviour
     private void move()
     {
         m_Animator.SetBool("CanWalk", true);
-        if (!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Mushroom_Attack1"))
+        if (!IsInAttackAnimation())
         {
             Vector2 targetPosition = new Vector2(m_Target.position.x, transform.position.y);
 
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, m_MoveSpeed * Time.deltaTime);
         }
+    }
+
+    public bool IsInAttackAnimation()
+    {
+        foreach (string attackAnimationName in m_AttackAnimationsNames)
+        {
+            if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName(attackAnimationName))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void attack()
@@ -152,9 +160,23 @@ public class MushroomAi : MonoBehaviour
         m_IsInCooling = true;
     }
 
-
     private bool IsInsideTheLimits()
     {
         return transform.position.x > m_LeftLimit.position.x && transform.position.x < m_RightLimit.position.x;
+    }
+
+    public void SetTarget(Transform i_Target)
+    {
+        m_Target = i_Target;
+    }
+
+    public void SetPlayerInRange(bool i_IsInRange)
+    {
+        m_IsPlayerInRange = i_IsInRange;
+    }
+
+    public void SetHotZoneActive(bool i_IsActive)
+    {
+        m_HotZone.SetActive(i_IsActive);
     }
 }
