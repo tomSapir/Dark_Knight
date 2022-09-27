@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerAreaCheck : MonoBehaviour
+public class SkeletonTriggerAreaCheck : MonoBehaviour
 {
     private SkeletonEnemyAi m_EnemyParent;
 
@@ -10,7 +8,6 @@ public class TriggerAreaCheck : MonoBehaviour
     {
         m_EnemyParent = GetComponentInParent<SkeletonEnemyAi>();
     }
-
 
     private void OnTriggerEnter2D(Collider2D i_Other)
     {

@@ -1,15 +1,16 @@
+using System;
 using UnityEngine;
 
-public class SkeletonEnemyAi : MonoBehaviour
+public class MushroomAi : MonoBehaviour
 {
     [SerializeField] private float m_AttackDistance; // minimum distance to attack
     [SerializeField] private float m_MoveSpeed;
 
     private float m_Timer; // timer for cooldown between attacks
 
-    [SerializeField]  private Transform m_LeftLimit, m_RightLimit;
+    [SerializeField] private Transform m_LeftLimit, m_RightLimit;
 
-    [HideInInspector] public Transform m_Target;
+    public Transform m_Target;
     [HideInInspector] public bool m_IsPlayerInRange; // if player is in range
 
     public GameObject m_HotZone;
@@ -33,9 +34,10 @@ public class SkeletonEnemyAi : MonoBehaviour
         m_EnemyHealthController = GetComponent<EnemyHealthController>();
     }
 
+
     void Update()
     {
-        if(m_EnemyHealthController.m_CurrentHealth > 0)
+        if (m_EnemyHealthController.m_CurrentHealth > 0)
         {
             if (!m_IsInAttackMode)
             {
@@ -43,8 +45,7 @@ public class SkeletonEnemyAi : MonoBehaviour
             }
 
             if (!IsInsideTheLimits() && !m_IsPlayerInRange
-                && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Attack1")
-                && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Attack2"))
+                && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Mushroom_Attack1"))
             {
                 SelectTarget();
             }
@@ -54,6 +55,8 @@ public class SkeletonEnemyAi : MonoBehaviour
                 enemyLogic();
             }
         }
+
+        Flip();
     }
 
     public void SelectTarget()
@@ -61,7 +64,7 @@ public class SkeletonEnemyAi : MonoBehaviour
         float distanceToLeftLimit = Vector2.Distance(transform.position, m_LeftLimit.position);
         float distanceToRightLimit = Vector2.Distance(transform.position, m_RightLimit.position);
 
-        if(distanceToLeftLimit > distanceToRightLimit)
+        if (distanceToLeftLimit > distanceToRightLimit)
         {
             m_Target = m_LeftLimit;
         }
@@ -77,7 +80,7 @@ public class SkeletonEnemyAi : MonoBehaviour
     {
         Vector3 rotation = transform.eulerAngles;
 
-        if(transform.position.x > m_Target.position.x)
+        if (transform.position.x > m_Target.position.x)
         {
             rotation.y = 180f;
         }
@@ -96,12 +99,12 @@ public class SkeletonEnemyAi : MonoBehaviour
         {
             stopAttack();
         }
-        else if(m_AttackDistance >= m_DistanceFromPlayer && m_IsInCooling == false)
+        else if (m_AttackDistance >= m_DistanceFromPlayer && m_IsInCooling == false)
         {
             attack();
         }
 
-        if(m_IsInCooling)
+        if (m_IsInCooling)
         {
             coolDown();
             m_Animator.SetBool("Attack", false);
@@ -111,8 +114,7 @@ public class SkeletonEnemyAi : MonoBehaviour
     private void move()
     {
         m_Animator.SetBool("CanWalk", true);
-        if(!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Attack1") &&
-            !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Attack2"))
+        if (!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Mushroom_Attack1"))
         {
             Vector2 targetPosition = new Vector2(m_Target.position.x, transform.position.y);
 
@@ -123,7 +125,7 @@ public class SkeletonEnemyAi : MonoBehaviour
     private void attack()
     {
         m_Timer = m_InitTimer; // reset timer when player enter attack range
-      
+
         m_Animator.SetBool("CanWalk", false);
         m_Animator.SetBool("Attack", true);
     }
@@ -138,13 +140,12 @@ public class SkeletonEnemyAi : MonoBehaviour
     private void coolDown()
     {
         m_Timer -= Time.deltaTime;
-        if(m_Timer <= 0 && m_IsInCooling && m_IsInAttackMode)
+        if (m_Timer <= 0 && m_IsInCooling && m_IsInAttackMode)
         {
             m_IsInCooling = false;
             m_Timer = m_InitTimer;
         }
     }
-
 
     public void TriggerCooling()
     {

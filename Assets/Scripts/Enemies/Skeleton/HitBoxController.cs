@@ -4,6 +4,14 @@ using UnityEngine;
 public class HitBoxController : MonoBehaviour
 {
     [SerializeField] private int m_DamageToPlayer;
+    private MushroomAi m_MushroomAi;
+    private SkeletonEnemyAi m_SkeletonEnemyAi;
+
+    void Start()
+    {
+        m_MushroomAi = GetComponentInParent<MushroomAi>();
+        m_SkeletonEnemyAi = GetComponentInParent<SkeletonEnemyAi>();
+    }
 
     void OnTriggerEnter2D(Collider2D i_Other)
     {
