@@ -27,6 +27,8 @@ public class PlayerCombatController : MonoBehaviour
         m_Animator.SetTrigger("Attack");
         foreach (Collider2D enemy in hitEnemies)
         {
+            Debug.Log(enemy.name);
+
             EnemyHealthController enemyHealthController = enemy.GetComponent<EnemyHealthController>();
 
             if(enemyHealthController == null)

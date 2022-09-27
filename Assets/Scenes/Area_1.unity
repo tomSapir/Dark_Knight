@@ -27787,6 +27787,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 155432096}
     m_Modifications:
+    - target: {fileID: 6621635074927684462, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621635074927684462, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621635075098257477, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621635075098257477, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621635075098257479, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_Size.x
+      value: 2.2940445
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621635075098257479, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_Size.y
+      value: 2.6780097
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621635075098257479, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_Offset.x
+      value: 1.6115761
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621635075098257479, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.79718983
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621635076115871725, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621635076115871726, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_Size.x
+      value: 9.671726
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621635076115871726, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_Offset.x
+      value: 4.757139
+      objectReference: {fileID: 0}
     - target: {fileID: 6621635076711889733, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
       propertyPath: m_Name
       value: Mushroom_Enemy
