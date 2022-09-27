@@ -39,6 +39,8 @@ public class PlayerCombatController : MonoBehaviour
             {
                 enemyHealthController.DamageEnemy(m_AttackDamage);
             }
+
+            AudioManager.m_Instance.PlaySFXAdjusted(15);
         }
     }
 
