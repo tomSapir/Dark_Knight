@@ -28,5 +28,9 @@ public class CameraController : MonoBehaviour
 
             transform.position = new Vector3(newPositionX, newPositionY, newPositionZ);
         }
+        else
+        {
+            m_PlayerController = FindObjectOfType<PlayerController>();
+        }
     }
 }

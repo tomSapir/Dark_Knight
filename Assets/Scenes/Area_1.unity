@@ -27867,6 +27867,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6621635076711889736, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621635076711889736, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_GravityScale
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621635076711889736, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6621635076711889737, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
       propertyPath: m_LeftLimit
       value: 

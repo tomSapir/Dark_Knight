@@ -32,18 +32,23 @@ public class PlayerHealthController : MonoBehaviour
 
     public void TakeDamage(int i_Damage)
     {
-        UIController.m_Instance.UpdateHealth(m_CurrentHealth, m_MaxHealth);
-        m_CurrentHealth -= i_Damage;
-        m_Animator.SetTrigger("Hurt");
-        Instantiate(m_BloodEffect, transform.position, transform.rotation);
-        if (m_CurrentHealth <= 0)
+        if(m_CurrentHealth > 0)
         {
-            die();
+            AudioManager.m_Instance.PlaySFX(11);
+            UIController.m_Instance.UpdateHealth(m_CurrentHealth, m_MaxHealth);
+            m_CurrentHealth -= i_Damage;
+            m_Animator.SetTrigger("Hurt");
+            Instantiate(m_BloodEffect, transform.position, transform.rotation);
+            if (m_CurrentHealth <= 0)
+            {
+                die();
+            }
         }
     }
 
     private void die()
     {
+        AudioManager.m_Instance.PlaySFX(8);
         m_Animator.SetTrigger("Die");
         RespawnController.m_Instance.Respawn();
     }
