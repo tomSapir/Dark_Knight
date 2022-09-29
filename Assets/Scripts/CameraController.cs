@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
         AudioManager.m_Instance.PlayLevelMusic();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if(m_PlayerController != null)
         {
