@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer m_SpriteRenderer;
     private PlayerAbillityTracker m_PlayerAbillityTracker;
 
-    [SerializeField] private float m_MoveSpeed = 8f;
-    [SerializeField] private float m_JumpForce = 20f;
+    [SerializeField] private float m_MoveSpeed = 4f;
+    [SerializeField] private float m_JumpForce = 15f;
 
     [SerializeField] private Transform m_GroundCheckPoint;
     [SerializeField] private LayerMask m_WhatIsGround;
@@ -128,11 +128,11 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift)) // if running
             {
-                m_MoveSpeed = 15f;
+                m_MoveSpeed = 10f;
             }
             else
             {
-                m_MoveSpeed = 8f;
+                m_MoveSpeed = 4f;
             }
         }
     }

@@ -1,11 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DoorController : MonoBehaviour
 {
-    [SerializeField] private Animator m_Animator;
     [SerializeField] private float m_DistanceToOpen;
     private PlayerController m_Player;
     private bool m_PlayerExiting = false;
@@ -22,15 +20,6 @@ public class DoorController : MonoBehaviour
 
     void Update()
     {
-        if(Vector3.Distance(transform.position, m_Player.transform.position) < m_DistanceToOpen)
-        {
-            m_Animator.SetBool("DoorOpen", true);
-        }
-        else
-        {
-            m_Animator.SetBool("DoorOpen", false);
-        }
-
         if(m_PlayerExiting)
         {
             m_Player.transform.position = Vector3.MoveTowards(m_Player.transform.position, m_ExitPoint.position, m_MovePlayerSpeed * Time.deltaTime);
@@ -56,6 +45,5 @@ public class DoorController : MonoBehaviour
         RespawnController.m_Instance.SetSpawn(m_ExitPoint.position);
         m_Player.CanMove = true;
         SceneManager.LoadScene(m_LevelToLoad);
-        //RespawnController.m_Instance.Respawn();
     }
 }

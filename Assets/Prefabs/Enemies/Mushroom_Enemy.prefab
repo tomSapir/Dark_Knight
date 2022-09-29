@@ -215,7 +215,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6621635076115871725}
   - component: {fileID: 6621635076115871726}
-  - component: {fileID: 6621635076115871727}
   m_Layer: 13
   m_Name: Trigger_Area
   m_TagString: Untagged
@@ -264,18 +263,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 12.640865, y: 3.203318}
   m_EdgeRadius: 0
---- !u!114 &6621635076115871727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6621635076115871724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b72e491617e92b341bad4f8cf08ddc8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6621635076692924078
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +358,6 @@ GameObject:
   - component: {fileID: 6621635076711889735}
   - component: {fileID: 6621635076711889734}
   - component: {fileID: 6621635076711889736}
-  - component: {fileID: 6621635076711889737}
   - component: {fileID: 6621635076711889738}
   m_Layer: 11
   m_Name: Mushroom_Enemy
@@ -441,27 +427,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6621635076711889737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6621635076711889733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abeba465ba56ecb4e8370996e2a9f82a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AttackDistance: 3
-  m_MoveSpeed: 3
-  m_LeftLimit: {fileID: 0}
-  m_RightLimit: {fileID: 0}
-  m_Target: {fileID: 0}
-  m_IsPlayerInRange: 0
-  m_HotZone: {fileID: 6621635074927684461}
-  m_TriggerArea: {fileID: 6621635076115871724}
-  m_BloodEffect: {fileID: 3249569771820457445, guid: 92068cb074e569247a0e088152b26ed5, type: 3}
 --- !u!114 &6621635076711889738
 MonoBehaviour:
   m_ObjectHideFlags: 0
