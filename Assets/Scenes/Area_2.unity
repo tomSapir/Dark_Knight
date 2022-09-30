@@ -2305,7 +2305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1623729489
 Transform:
   m_ObjectHideFlags: 0
@@ -2340,6 +2340,19 @@ MonoBehaviour:
   m_Camera: {fileID: 0}
   m_CameraPosition: {fileID: 1409064377}
   m_CameraSpeed: 5
+  m_TreshHold1: 20
+  m_TreshHold2: 5
+  m_ActiveTime: 5
+  m_FadeoutTime: 0.5
+  m_InactiveTime: 1
+  m_SpawnPoints:
+  - {fileID: 731726073}
+  - {fileID: 1279388439}
+  - {fileID: 985095845}
+  - {fileID: 377956020}
+  m_MoveSpeed: 5
+  m_Animator: {fileID: 998403436}
+  m_Boss: {fileID: 998403433}
 --- !u!114 &1623729491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2557,7 +2570,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

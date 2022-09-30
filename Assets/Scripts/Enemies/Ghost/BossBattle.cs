@@ -98,9 +98,12 @@ public class BossBattle : MonoBehaviour
                         m_Boss.position = m_SpawnPoints[Random.Range(0, m_SpawnPoints.Length)].position;
 
                         m_TargetPoint = m_SpawnPoints[Random.Range(0, m_SpawnPoints.Length)];
-                        while(m_TargetPoint.position == m_Boss.position)
+
+                        int whileBreaker = 0;
+                        while(m_TargetPoint.position == m_Boss.position && whileBreaker < 100)
                         {
                             m_TargetPoint = m_SpawnPoints[Random.Range(0, m_SpawnPoints.Length)];
+                            whileBreaker++;
                         }
 
                         m_Boss.gameObject.SetActive(true);
