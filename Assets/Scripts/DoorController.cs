@@ -41,9 +41,11 @@ public class DoorController : MonoBehaviour
     IEnumerator UseDoorCorutine()
     {
         m_PlayerExiting = true;
-        yield return new WaitForSeconds(4f);
+        UIController.m_Instance.StartFadeToBlack();
+        yield return new WaitForSeconds(2f);
         RespawnController.m_Instance.SetSpawn(m_ExitPoint.position);
         m_Player.CanMove = true;
+        UIController.m_Instance.StartFadeFromBlack();
         SceneManager.LoadScene(m_LevelToLoad);
     }
 }

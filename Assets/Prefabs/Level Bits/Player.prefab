@@ -76,7 +76,7 @@ MonoBehaviour:
   m_RigidBody: {fileID: 696843859328629218}
   m_SpriteRenderer: {fileID: 696843860050729127}
   m_MoveSpeed: 8
-  m_JumpForce: 20
+  m_JumpForce: 22
   m_GroundCheckPoint: {fileID: 696843859715585678}
   m_WhatIsGround:
     serializedVersion: 2
@@ -88,6 +88,7 @@ MonoBehaviour:
   m_TimeBetweenAfterImages: 0.033333335
   m_AfterImageColor: {r: 0.14117648, g: 0.6, b: 0.9529412, a: 0.69411767}
   m_TimeToWaitAfterDashing: 0.3
+  m_Dust: {fileID: 0}
 --- !u!114 &696843859328629221
 MonoBehaviour:
   m_ObjectHideFlags: 0
