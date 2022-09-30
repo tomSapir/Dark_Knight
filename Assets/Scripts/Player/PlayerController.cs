@@ -179,15 +179,6 @@ public class PlayerController : MonoBehaviour
             {
                 m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, m_JumpForce);
                 m_CanDoubleJump = !m_CanDoubleJump;
-
-                if(m_IsOnGround)
-                {
-                    AudioManager.m_Instance.PlaySFXAdjusted(12);
-                }
-                else
-                {
-                    AudioManager.m_Instance.PlaySFXAdjusted(9);
-                }
             }
         }
 

@@ -35,7 +35,7 @@ public class FlyingEyeAi : MonoBehaviour
 
     void Update()
     {
-        if (m_PlayerInRange && m_CanAttack)
+        if (m_PlayerInRange && m_CanAttack && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Flying_Eye_Take_Hit"))
         {
             StartCoroutine(AttackPlayer());
         }
@@ -72,6 +72,7 @@ public class FlyingEyeAi : MonoBehaviour
         m_CanAttack = false;
         m_Animator.SetTrigger("Attack");
         yield return new WaitForSeconds(0.3f);
+        AudioManager.m_Instance.PlaySFX(12);
         GameObject.Find("Player").GetComponent<PlayerHealthController>().TakeDamage(m_Damage);
         yield return new WaitForSeconds(m_EnemyAttackCoolDown);
         m_CanAttack = true;
