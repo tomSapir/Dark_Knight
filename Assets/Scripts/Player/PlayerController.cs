@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_TimeToWaitAfterDashing;
     private float m_DashRechargeCounter;
 
+    public ParticleSystem m_Dust;
+
     public bool CanMove { get; set; }
 
     private void Start()

@@ -17,7 +17,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public enum eMusicType { MainMenu, LevelMusic, BossMusic }
     public AudioSource m_MainMenuMusic, m_LevelMusic, m_BossMusic;
     public AudioSource[] m_SFX;
 
