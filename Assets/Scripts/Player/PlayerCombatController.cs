@@ -27,17 +27,22 @@ public class PlayerCombatController : MonoBehaviour
         m_Animator.SetTrigger("Attack");
         foreach (Collider2D enemy in hitEnemies)
         {
-            Debug.Log(enemy.name);
-
-            EnemyHealthController enemyHealthController = enemy.GetComponent<EnemyHealthController>();
-
-            if(enemyHealthController == null)
+            if(enemy.tag == "Boss")
             {
-                enemy.GetComponentInParent<EnemyHealthController>().DamageEnemy(m_AttackDamage);
+                BossHealthController.m_Instance.TakeDamage(2);
             }
             else
             {
-                enemyHealthController.DamageEnemy(m_AttackDamage);
+                EnemyHealthController enemyHealthController = enemy.GetComponent<EnemyHealthController>();
+                if (enemyHealthController == null)
+                {
+                    enemy.GetComponentInParent<EnemyHealthController>().DamageEnemy(m_AttackDamage);
+                }
+                else
+                {
+                    enemyHealthController.DamageEnemy(m_AttackDamage);
+                }
+
             }
 
             AudioManager.m_Instance.PlaySFXAdjusted(15);
