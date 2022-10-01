@@ -144,13 +144,13 @@ GameObject:
   - component: {fileID: 6621635075098257478}
   - component: {fileID: 6621635075098257479}
   - component: {fileID: 6621635075098257480}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Hit_Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6621635075098257478
 Transform:
   m_ObjectHideFlags: 0
@@ -179,7 +179,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.6287651, y: 0.8143827}
+  m_Offset: {x: 1.6115761, y: 0.79718983}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -190,7 +190,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3656387, y: 1.1994407}
+  m_Size: {x: 2.2940445, y: 2.6780097}
   m_EdgeRadius: 0
 --- !u!114 &6621635075098257480
 MonoBehaviour:
@@ -215,6 +215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6621635076115871725}
   - component: {fileID: 6621635076115871726}
+  - component: {fileID: 467937663}
   m_Layer: 13
   m_Name: Trigger_Area
   m_TagString: Untagged
@@ -230,7 +231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6621635076115871724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.88, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -250,7 +251,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.7725086, y: 1.101659}
+  m_Offset: {x: 4.757139, y: 1.101659}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -261,8 +262,20 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.640865, y: 3.203318}
+  m_Size: {x: 9.671726, y: 3.203318}
   m_EdgeRadius: 0
+--- !u!114 &467937663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6621635076115871724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4977445c6162bed4c8f451ec3ed7b9f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6621635076692924078
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,8 +301,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6621635076692924078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 1.49, z: 0}
-  m_LocalScale: {x: 7.249736, y: 7.249736, z: 7.249736}
+  m_LocalPosition: {x: -0.33, y: 1.2, z: -0}
+  m_LocalScale: {x: 5.612746, y: 5.612746, z: 5.612746}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6621635076711889735}
@@ -333,8 +346,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1620331445
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: f8b30c2afe165d645b54d500a9c30862, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -359,13 +372,14 @@ GameObject:
   - component: {fileID: 6621635076711889734}
   - component: {fileID: 6621635076711889736}
   - component: {fileID: 6621635076711889738}
+  - component: {fileID: 946775515}
   m_Layer: 11
   m_Name: Mushroom_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6621635076711889735
 Transform:
   m_ObjectHideFlags: 0
@@ -420,12 +434,12 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0.01
+  m_GravityScale: 100
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &6621635076711889738
 MonoBehaviour:
@@ -443,3 +457,28 @@ MonoBehaviour:
   m_MaxHealth: 100
   m_CurrentHealth: 0
   m_BloodEffect: {fileID: 3249569771820457445, guid: 92068cb074e569247a0e088152b26ed5, type: 3}
+--- !u!114 &946775515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6621635076711889733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d23459d213a00184cb1c68f68125560c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AttackDistance: 4
+  m_MoveSpeed: 2
+  m_LeftLimit: {fileID: 0}
+  m_RightLimit: {fileID: 0}
+  m_Animator: {fileID: 6621635076711889734}
+  m_BloodEffect: {fileID: 3249569771820457445, guid: 92068cb074e569247a0e088152b26ed5, type: 3}
+  m_AttackAnimationsNames:
+  - Mushroom_Attack1
+  m_Target: {fileID: 0}
+  m_IsPlayerInRange: 0
+  m_HotZone: {fileID: 6621635074927684461}
+  m_TriggerArea: {fileID: 6621635076115871724}
+  m_IsInAttackMode: 0

@@ -392,7 +392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2947760954571452537
 Transform:
   m_ObjectHideFlags: 0
@@ -483,7 +483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AttackDistance: 4
-  m_MoveSpeed: 6
+  m_MoveSpeed: 4
   m_LeftLimit: {fileID: 0}
   m_RightLimit: {fileID: 0}
   m_Animator: {fileID: 2947760954571452533}

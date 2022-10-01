@@ -35,7 +35,7 @@ public class FlyingEyeAi : MonoBehaviour
 
     void Update()
     {
-        if (m_PlayerInRange && m_CanAttack && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Flying_Eye_Take_Hit"))
+        if (m_PlayerInRange && m_CanAttack && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Take_Hit"))
         {
             StartCoroutine(AttackPlayer());
         }

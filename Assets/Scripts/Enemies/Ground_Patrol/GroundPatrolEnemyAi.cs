@@ -33,25 +33,28 @@ public class GroundPatrolEnemyAi : MonoBehaviour
 
     void Update()
     {
-        if (m_EnemyHealthController.m_CurrentHealth > 0)
+        if(!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Take_Hit"))
         {
-            if (!m_IsInAttackMode)
+            if (m_EnemyHealthController.m_CurrentHealth > 0)
             {
-                move();
-            }
+                if (!m_IsInAttackMode)
+                {
+                    move();
+                }
 
-            if(!IsInsideTheLimits() && !m_IsPlayerInRange && !IsInAttackAnimation())
-            {
+                if (!IsInsideTheLimits() && !m_IsPlayerInRange && !IsInAttackAnimation())
+                {
                     SelectTarget();
+                }
+
+                if (m_IsPlayerInRange)
+                {
+                    enemyLogic();
+                }
             }
 
-            if (m_IsPlayerInRange)
-            {
-                enemyLogic();
-            }
+            Flip();
         }
-
-        Flip();
     }
 
     public void SelectTarget()

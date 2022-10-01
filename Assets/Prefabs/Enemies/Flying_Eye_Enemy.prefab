@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7746501273640758791
 Transform:
   m_ObjectHideFlags: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EnemyGFX: {fileID: 2313730637665487828}
   m_CurrentWayPoint: 0
   m_EnemyAttackCoolDown: 1
-  m_Damage: 1
+  m_Damage: 5
   m_PlayerInRange: 0
   m_CanAttack: 1
   m_BloodEffect: {fileID: 3249569771820457445, guid: 92068cb074e569247a0e088152b26ed5, type: 3}

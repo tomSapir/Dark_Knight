@@ -14,8 +14,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform m_GroundCheckPoint;
     [SerializeField] private LayerMask m_WhatIsGround;
     private bool m_IsOnGround;
+    private bool m_IsFallingDown;
 
     private bool m_CanDoubleJump;
+    [SerializeField] private float m_FallingDownTreshold = -8f;
 
     private bool m_IsAttacking = false;
     private bool m_IsAirAttacking = false;
@@ -47,6 +49,7 @@ public class PlayerController : MonoBehaviour
     {
         if(CanMove)
         {
+            updateIsFallingDown();
             handleDash();
             updateIsAttacking();
             handleSpeed();
@@ -61,6 +64,20 @@ public class PlayerController : MonoBehaviour
         {
             m_RigidBody.velocity = Vector2.zero;
         }
+    }
+
+    private void updateIsFallingDown()
+    {
+        if(!m_IsOnGround && m_RigidBody.velocity.y < m_FallingDownTreshold)
+        {
+            m_IsFallingDown = true;
+        }
+        else
+        {
+            m_IsFallingDown = false;
+        }
+
+        m_Animator.SetBool("IsFallingDown", m_IsFallingDown);
     }
 
     private void handleDash()
