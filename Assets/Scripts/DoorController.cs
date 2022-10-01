@@ -5,13 +5,11 @@ using UnityEngine.SceneManagement;
 public class DoorController : MonoBehaviour
 {
     [SerializeField] private float m_DistanceToOpen;
-    private PlayerController m_Player;
-    private bool m_PlayerExiting = false;
-
     [SerializeField] private Transform m_ExitPoint;
     [SerializeField] private float m_MovePlayerSpeed;
-
     [SerializeField] private string m_LevelToLoad;
+    private PlayerController m_Player;
+    private bool m_PlayerExiting = false;
 
     void Start()
     {

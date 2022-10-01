@@ -23,7 +23,6 @@ public class PlayerHealthController : MonoBehaviour
     [SerializeField] private GameObject m_BloodEffect;
     public int m_CurrentHealth;
 
-
     void Start()
     {
         m_CurrentHealth = m_MaxHealth;

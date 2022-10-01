@@ -19,15 +19,14 @@ public class RespawnController : MonoBehaviour
         }
     }
 
-    private Vector3 m_RespawnPoint;
     [SerializeField] private float m_WaitToRespawn;
+    private Vector3 m_RespawnPoint;
 
     private GameObject m_Player;
 
     void Start()
     {
         m_Player = PlayerHealthController.m_Instance.gameObject;
-
         m_RespawnPoint = m_Player.transform.position;
     }
 
@@ -41,16 +40,11 @@ public class RespawnController : MonoBehaviour
         m_Player.GetComponent<PlayerController>().CanMove = false;
         yield return new WaitForSeconds(1f);
         m_Player.SetActive(false);
-
         yield return new WaitForSeconds(m_WaitToRespawn);
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
         m_Player.transform.position = m_RespawnPoint;
-
         m_Player.SetActive(true);
         m_Player.GetComponent<PlayerController>().CanMove = true;
-
         PlayerHealthController.m_Instance.FillHealth();
     }
 

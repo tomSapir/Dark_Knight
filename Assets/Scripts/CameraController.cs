@@ -2,11 +2,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private PlayerController m_PlayerController;
-
-    [Header("Bounds")]
     [SerializeField] private BoxCollider2D m_BoundsBox;
-
+    private PlayerController m_PlayerController;
     private float m_HalfHeight, m_HalfWidth;
 
     void Start()

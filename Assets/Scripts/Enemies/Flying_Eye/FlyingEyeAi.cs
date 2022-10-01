@@ -11,8 +11,8 @@ public class FlyingEyeAi : MonoBehaviour
     [SerializeField] private Transform m_EnemyGFX;
     private Rigidbody2D m_RigidBody;
 
-    private Path m_Path;
     [SerializeField] private int m_CurrentWayPoint = 0;
+    private Path m_Path;
     private bool m_ReachedEndOfPath = false;
     private Seeker m_Seeker;
 

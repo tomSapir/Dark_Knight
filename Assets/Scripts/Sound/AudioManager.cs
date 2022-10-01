@@ -53,5 +53,4 @@ public class AudioManager : MonoBehaviour
         m_SFX[i_SFXAdjust].pitch = Random.Range(.8f, 1.2f);
         PlaySFX(i_SFXAdjust);
     }
-
 }

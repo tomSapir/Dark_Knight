@@ -2895,7 +2895,7 @@ GameObject:
   - component: {fileID: 4141214719271675915}
   - component: {fileID: 4141214719271675914}
   m_Layer: 17
-  m_Name: Area 1
+  m_Name: Area_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3093,6 +3093,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4141214720167529760}
+  - component: {fileID: 1343152389}
   m_Layer: 0
   m_Name: Map System
   m_TagString: Untagged
@@ -3117,6 +3118,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1343152389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4141214720167529761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd8a22d6cb55c642b93a337df1886eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Maps:
+  - {fileID: 4141214719271675924}
+  - {fileID: 8829313333629013572}
 --- !u!1 &4141214720712978175
 GameObject:
   m_ObjectHideFlags: 0
@@ -5992,7 +6008,7 @@ GameObject:
   - component: {fileID: 4160064656887642309}
   - component: {fileID: 1076041918270193691}
   m_Layer: 17
-  m_Name: Area 2
+  m_Name: Area_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

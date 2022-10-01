@@ -53,13 +53,11 @@ public class UIController : MonoBehaviour
     {
         m_FadingToBlack = true;
         m_FadingFromBlack = false;
-
     }
 
     public void StartFadeFromBlack()
     {
         m_FadingToBlack = false;
         m_FadingFromBlack = true;
-
     }
 }
