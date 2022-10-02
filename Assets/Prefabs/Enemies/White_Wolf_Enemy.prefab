@@ -243,7 +243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7377836702723290743
 Transform:
   m_ObjectHideFlags: 0
@@ -444,6 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23459d213a00184cb1c68f68125560c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_EnemyType: Wolf
   m_AttackDistance: 1.7
   m_MoveSpeed: 5
   m_LeftLimit: {fileID: 0}

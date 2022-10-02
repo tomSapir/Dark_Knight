@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 2910724288251317075}
-  m_MaxHealth: 100
+  m_MaxHealth: 60
   m_CurrentHealth: 0
   m_BloodEffect: {fileID: 3249569771820457445, guid: 92068cb074e569247a0e088152b26ed5, type: 3}
 --- !u!1 &6499252459561455088

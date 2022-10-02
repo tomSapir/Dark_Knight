@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GroundPatrolEnemyAi : MonoBehaviour
 {
+    [SerializeField] private string m_EnemyType;
     [SerializeField] private float m_AttackDistance; // minimum distance to attack
     [SerializeField] private float m_MoveSpeed;
     [SerializeField] private Transform m_LeftLimit, m_RightLimit;
@@ -135,10 +136,21 @@ public class GroundPatrolEnemyAi : MonoBehaviour
 
     private void attack()
     {
+        switch (m_EnemyType)
+        {
+            case "Wolf":
+                {
+                    AudioManager.m_Instance.PlaySFX(16);
+                    break;
+                }
+        }
+
         m_Timer = m_InitTimer; // reset timer when player enter attack range
 
         m_Animator.SetBool("CanWalk", false);
         m_Animator.SetBool("Attack", true);
+
+
     }
 
     private void stopAttack()
