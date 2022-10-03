@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class UIController : MonoBehaviour
 {
@@ -80,6 +81,7 @@ public class UIController : MonoBehaviour
         }
         else
         {
+            setSelectedButtonToNull();
             m_PauseScreen.SetActive(false);
             Time.timeScale = 1f;
         }
@@ -87,6 +89,7 @@ public class UIController : MonoBehaviour
 
     public void OnClickMainMenuBtnPauseMenu()
     {
+        setSelectedButtonToNull();
         Time.timeScale = 1f;
 
         Destroy(PlayerHealthController.m_Instance.gameObject);
@@ -114,7 +117,13 @@ public class UIController : MonoBehaviour
 
     public void OnClickBackFromHowToPlayBtn()
     {
+        setSelectedButtonToNull();
         m_PauseControlsContainer.SetActive(true);
         m_HowToPlayScreen.SetActive(false);
+    }
+
+    private void setSelectedButtonToNull()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }

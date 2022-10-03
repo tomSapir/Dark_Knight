@@ -13,7 +13,6 @@ public class GroundPatrolTriggerArea : MonoBehaviour
     {
         if (i_Other.gameObject.CompareTag("Player"))
         {
-            Debug.Break();
             gameObject.SetActive(false);
             m_EnemyParent.SetTarget(i_Other.transform);
             m_EnemyParent.SetPlayerInRange(true);
