@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(CanMove)
+        if(CanMove && Time.timeScale != 0f)
         {
             updateIsFallingDown();
             handleDash();

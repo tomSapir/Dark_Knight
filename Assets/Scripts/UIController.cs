@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class UIController : MonoBehaviour
     [SerializeField] private Slider m_HealthSlider;
     [SerializeField] private Image m_FadeScreen;
     [SerializeField] private float m_FadeSpeed = 2f;
+    [SerializeField] private string m_MainMenuSceneName;
+    [SerializeField] private GameObject m_PauseScreen;
+    [SerializeField] private GameObject m_HowToPlayScreen;
+    [SerializeField] private GameObject m_PauseControlsContainer;
     private bool m_FadingToBlack, m_FadingFromBlack;
 
     void Update()
@@ -41,6 +46,11 @@ public class UIController : MonoBehaviour
                 m_FadingFromBlack = false;
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseAndUnpause();
+        }
     }
 
     public void UpdateHealth(int i_CurrentHealth, int i_MaxHealth)
@@ -59,5 +69,52 @@ public class UIController : MonoBehaviour
     {
         m_FadingToBlack = false;
         m_FadingFromBlack = true;
+    }
+
+    public void PauseAndUnpause()
+    {
+        if(!m_PauseScreen.activeSelf)
+        {
+            m_PauseScreen.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            m_PauseScreen.SetActive(false);
+            Time.timeScale = 1f;
+        }
+    }
+
+    public void OnClickMainMenuBtnPauseMenu()
+    {
+        Time.timeScale = 1f;
+
+        Destroy(PlayerHealthController.m_Instance.gameObject);
+        PlayerHealthController.m_Instance = null;
+
+        Destroy(RespawnController.m_Instance.gameObject);
+        RespawnController.m_Instance = null;
+
+        m_Instance = null;
+        Destroy(gameObject);
+
+        SceneManager.LoadScene(m_MainMenuSceneName);
+    }
+
+    public void OnClickQuitBtnPauseMenu()
+    {
+        Application.Quit();
+    }
+
+    public void OnClickHowToPlayBtn()
+    {
+        m_PauseControlsContainer.SetActive(false);
+        m_HowToPlayScreen.SetActive(true);
+    }
+
+    public void OnClickBackFromHowToPlayBtn()
+    {
+        m_PauseControlsContainer.SetActive(true);
+        m_HowToPlayScreen.SetActive(false);
     }
 }

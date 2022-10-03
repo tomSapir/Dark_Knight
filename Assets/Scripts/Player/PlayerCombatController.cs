@@ -11,7 +11,7 @@ public class PlayerCombatController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")) // Left click on mouse
+        if (Input.GetButtonDown("Fire1") && Time.timeScale != 0f) // Left click on mouse
         {
             Attack();
         }
