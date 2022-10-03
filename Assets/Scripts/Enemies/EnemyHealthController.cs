@@ -39,6 +39,12 @@ public class EnemyHealthController : MonoBehaviour
     private void die()
     {
         m_Animator.SetBool("IsDead", true);
+        this.enabled = false;
+
+        if(gameObject.name == "Flying_Eye_Enemy")
+        {
+            Destroy(gameObject);
+        }
     }
 }
 

@@ -47,6 +47,7 @@ public class FlyingEyeAi : MonoBehaviour
     {
         if(transform.childCount == 1)
         {
+            this.enabled = false;
             Destroy(gameObject);
         }
     }
