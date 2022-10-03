@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class BossHealthController : MonoBehaviour
 {
     public static BossHealthController m_Instance;
+    public GameObject m_GotHitEffect;
 
     void Awake()
     {
@@ -12,9 +13,7 @@ public class BossHealthController : MonoBehaviour
 
     [SerializeField] private Slider m_BossHealthSlider;
     public int m_CurrentHealth = 30;
-    [SerializeField] private BossBattle m_Boss;
-
-
+    [SerializeField] private BossBattle m_BossBattle;
 
     void Start()
     {
@@ -24,12 +23,13 @@ public class BossHealthController : MonoBehaviour
 
     public void TakeDamage(int i_DamageAmount)
     {
+        Instantiate(m_GotHitEffect, m_BossBattle.m_Boss.position, m_BossBattle.m_Boss.rotation);
         m_CurrentHealth -= i_DamageAmount;
 
         if(m_CurrentHealth <= 0)
         {
             m_CurrentHealth = 0;
-            m_Boss.EndBattle();
+            m_BossBattle.EndBattle();
         }
 
         m_BossHealthSlider.value = m_CurrentHealth;

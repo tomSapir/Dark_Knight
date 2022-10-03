@@ -28,6 +28,7 @@ public class BossBattle : MonoBehaviour
 
     void Start()
     {
+        AudioManager.m_Instance.PlayBossMusic();
         m_Camera = FindObjectOfType<CameraController>();
         m_Camera.enabled = false;
         m_ActiveCounter = m_ActiveTime;
@@ -184,6 +185,7 @@ public class BossBattle : MonoBehaviour
 
     public void EndBattle()
     {
+        AudioManager.m_Instance.PlayLevelMusic();
         m_BattleEnded = true;
         m_FadoutCounter = m_FadeoutTime;
         m_Animator.SetTrigger("Vanish");

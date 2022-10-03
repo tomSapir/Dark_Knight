@@ -47999,14 +47999,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 458213957206904909, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 458213958243069824, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 458213958243069825, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
+      propertyPath: m_Animator
+      value: 
+      objectReference: {fileID: 957956670}
     - target: {fileID: 7613632536494878694, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -48057,6 +48053,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
+--- !u!95 &957956670 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8682960731373574261, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
+  m_PrefabInstance: {fileID: 957956669}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &962945022
 GameObject:
   m_ObjectHideFlags: 0
@@ -100277,6 +100278,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 753072772}
     - target: {fileID: 946775515, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_EnemyType
+      value: Mushroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 946775515, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
       propertyPath: m_LeftLimit
       value: 
       objectReference: {fileID: 217384873}
@@ -100284,6 +100289,10 @@ PrefabInstance:
       propertyPath: m_RightLimit
       value: 
       objectReference: {fileID: 1689396084}
+    - target: {fileID: 946775515, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_AttackDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6621635076711889733, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
       propertyPath: m_Name
       value: Mushroom_Enemy

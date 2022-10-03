@@ -3,13 +3,12 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D m_BoundsBox;
-    private Animator m_Animator;
+    [SerializeField]  private Animator m_Animator;
     private PlayerController m_PlayerController;
     private float m_HalfHeight, m_HalfWidth;
 
     void Start()
     {
-        m_Animator = GetComponent<Animator>();
         m_PlayerController = FindObjectOfType<PlayerController>();
         m_HalfHeight = Camera.main.orthographicSize;
         m_HalfWidth = m_HalfHeight * Camera.main.aspect;
