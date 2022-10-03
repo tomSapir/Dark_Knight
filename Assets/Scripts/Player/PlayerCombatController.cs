@@ -8,6 +8,12 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField] private LayerMask m_EnemyLayers;
     [SerializeField] private LayerMask m_DestructibleLayers;
     [SerializeField] private int m_AttackDamage = 20;
+    [SerializeField] private CameraController m_CameraController;
+
+    void Start()
+    {
+        m_CameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
+    }
 
     void Update()
     {
@@ -24,7 +30,8 @@ public class PlayerCombatController : MonoBehaviour
         m_Animator.SetTrigger("Attack");
         foreach (Collider2D enemy in hitEnemies)
         {
-            if(enemy.tag == "Boss")
+            m_CameraController.ShakeCamera();
+            if (enemy.tag == "Boss")
             {
                 BossHealthController.m_Instance.TakeDamage(2);
             }
