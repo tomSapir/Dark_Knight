@@ -15,6 +15,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void OnClickNewGameBtn()
     {
+        //m_PlayerAbillityTracker.gameObject.SetActive(true);
         PlayerPrefs.DeleteAll();
         SceneManager.LoadScene(m_NewGameScene);
     }

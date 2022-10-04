@@ -100536,18 +100536,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 155432096}
     m_Modifications:
-    - target: {fileID: 2947760953668359397, guid: 63feaee1f1de3a749839f4f7c3568ea9, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 2947760953693914993, guid: 63feaee1f1de3a749839f4f7c3568ea9, type: 3}
-      propertyPath: m_DamageToPlayer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2947760953785982393, guid: 63feaee1f1de3a749839f4f7c3568ea9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2947760954571452536, guid: 63feaee1f1de3a749839f4f7c3568ea9, type: 3}
       propertyPath: m_Target
       value: 
@@ -100607,10 +100595,6 @@ PrefabInstance:
     - target: {fileID: 2947760954571452538, guid: 63feaee1f1de3a749839f4f7c3568ea9, type: 3}
       propertyPath: m_Name
       value: Martial_Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2947760954571452538, guid: 63feaee1f1de3a749839f4f7c3568ea9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63feaee1f1de3a749839f4f7c3568ea9, type: 3}

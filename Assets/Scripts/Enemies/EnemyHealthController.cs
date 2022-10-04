@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyHealthController : MonoBehaviour
@@ -41,7 +42,7 @@ public class EnemyHealthController : MonoBehaviour
         m_Animator.SetBool("IsDead", true);
         this.enabled = false;
 
-        if(gameObject.name == "Flying_Eye_Enemy")
+        if (gameObject.name == "Flying_Eye_Enemy")
         {
             Destroy(gameObject);
         }
