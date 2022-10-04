@@ -19,14 +19,13 @@ public class PlayerHealthController : MonoBehaviour
     }
 
     [SerializeField] private Animator m_Animator;
-    [SerializeField] private int m_MaxHealth = 100;
     [SerializeField] private GameObject m_BloodEffect;
+    public int m_MaxHealth = 100;
     public int m_CurrentHealth;
 
     void Start()
     {
         m_CurrentHealth = m_MaxHealth;
-        UIController.m_Instance.UpdateHealth(m_CurrentHealth, m_MaxHealth);
     }
 
     public void TakeDamage(int i_Damage)

@@ -29,6 +29,11 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject m_PauseControlsContainer;
     private bool m_FadingToBlack, m_FadingFromBlack;
 
+    void Start()
+    {
+        UpdateHealth(PlayerHealthController.m_Instance.m_CurrentHealth, PlayerHealthController.m_Instance.m_MaxHealth);
+    }
+
     void Update()
     {
         if(m_FadingToBlack)

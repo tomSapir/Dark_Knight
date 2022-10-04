@@ -185,7 +185,9 @@ public class BossBattle : MonoBehaviour
 
     public void EndBattle()
     {
+        AudioManager.m_Instance.PlaySFX(0);
         AudioManager.m_Instance.PlayLevelMusic();
+
         m_BattleEnded = true;
         m_FadoutCounter = m_FadeoutTime;
         m_Animator.SetTrigger("Vanish");

@@ -44,6 +44,15 @@ public class DoorController : MonoBehaviour
         RespawnController.m_Instance.SetSpawn(m_ExitPoint.position);
         m_Player.CanMove = true;
         UIController.m_Instance.StartFadeFromBlack();
+        saveNewLevelData();
         SceneManager.LoadScene(m_LevelToLoad);
+    }
+
+    private void saveNewLevelData()
+    {
+        PlayerPrefs.SetString("ContinueLevel", m_LevelToLoad);
+        PlayerPrefs.SetFloat("PosX", m_ExitPoint.position.x);
+        PlayerPrefs.SetFloat("PosY", m_ExitPoint.position.y);
+        PlayerPrefs.SetFloat("PosZ", m_ExitPoint.position.z);
     }
 }
