@@ -15,7 +15,6 @@ public class BossBullet : MonoBehaviour
 
     }
 
-
     void Update()
     {
         m_RigidBody.velocity = -transform.right * m_MoveSpeed;
