@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Damage: 1
-  m_ActivationDelay: 2
+  m_ActivationDelay: 1
   m_ActiveTime: 2
   m_TriggeredSprite: {fileID: -1418500145, guid: 3ffaad6c346b57b45ad442ae5e090ea0, type: 3}
   m_NormalSprite: {fileID: -1580055837, guid: 3ffaad6c346b57b45ad442ae5e090ea0, type: 3}
