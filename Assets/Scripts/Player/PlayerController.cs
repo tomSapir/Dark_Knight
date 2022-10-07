@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour
 
     private void checkIfOnTheGround()
     {
-        m_IsOnGround = Physics2D.OverlapCircle(m_GroundCheckPoint.position, .2f, m_WhatIsGround);
+        m_IsOnGround = Physics2D.OverlapCircle(m_GroundCheckPoint.position, .4f, m_WhatIsGround);
     }
 
     private void handleJumping()
