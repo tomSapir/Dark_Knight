@@ -4,18 +4,24 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject m_ContinueBtn;
+    [SerializeField] private GameObject m_QuitBtn;
     [SerializeField] private PlayerAbillityTracker m_PlayerAbillityTracker;
     public string m_NewGameScene;
 
     void Start()
     {
         m_ContinueBtn.SetActive(PlayerPrefs.HasKey("ContinueLevel"));
+
+        if(!m_ContinueBtn.activeSelf)
+        {
+            m_QuitBtn.transform.position = m_ContinueBtn.transform.position;
+        }
+
         AudioManager.m_Instance.PlayMainMenuMusic();
     }
 
     public void OnClickNewGameBtn()
     {
-        //m_PlayerAbillityTracker.gameObject.SetActive(true);
         PlayerPrefs.DeleteAll();
         SceneManager.LoadScene(m_NewGameScene);
     }

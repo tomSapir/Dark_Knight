@@ -1397,6 +1397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ContinueBtn: {fileID: 1143302172}
+  m_QuitBtn: {fileID: 1469932620}
   m_PlayerAbillityTracker: {fileID: 1760265466}
   m_NewGameScene: Area_1
 --- !u!1 &963619249
