@@ -48174,6 +48174,22 @@ PrefabInstance:
       propertyPath: m_DistanceToOpen
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 458213957768996743, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
+      propertyPath: m_Size.x
+      value: 177.04634
+      objectReference: {fileID: 0}
+    - target: {fileID: 458213957768996743, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
+      propertyPath: m_Size.y
+      value: 39.23856
+      objectReference: {fileID: 0}
+    - target: {fileID: 458213957768996743, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
+      propertyPath: m_Offset.x
+      value: 50.564995
+      objectReference: {fileID: 0}
+    - target: {fileID: 458213957768996743, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
+      propertyPath: m_Offset.y
+      value: 5.045168
+      objectReference: {fileID: 0}
     - target: {fileID: 458213958243069825, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
       propertyPath: m_Animator
       value: 
