@@ -35,7 +35,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_TimeToWaitAfterDashing;
     private float m_DashRechargeCounter;
 
-    public ParticleSystem m_Dust;
+    [SerializeField] private float m_TrampolineLaunchForce;
+
 
     public bool CanMove { get; set; }
 
@@ -248,5 +249,13 @@ public class PlayerController : MonoBehaviour
         afterImage.color = m_AfterImageColor;
         Destroy(afterImage.gameObject, m_AfterImageLifeTime);
         m_AfterImageCounter = m_TimeBetweenAfterImages;
+    }
+
+    public void OnCollisionEnter2D(Collision2D i_Other)
+    {
+        if(i_Other.gameObject.tag == "Trampoline")
+        {
+            m_RigidBody.velocity = Vector2.up * m_TrampolineLaunchForce;
+        }
     }
 }
