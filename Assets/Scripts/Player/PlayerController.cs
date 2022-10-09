@@ -37,8 +37,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float m_TrampolineLaunchForce;
 
-
     public bool CanMove { get; set; }
+
+    public bool m_CanIncreaseSpeed;
 
     private void Start()
     {
@@ -153,6 +154,11 @@ public class PlayerController : MonoBehaviour
             else
             {
                 m_MoveSpeed = 4f;
+            }
+
+            if(m_PlayerAbillityTracker.m_CanIncreaseSpeed)
+            {
+                m_MoveSpeed += 6f;
             }
         }
     }

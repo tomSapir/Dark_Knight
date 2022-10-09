@@ -670,10 +670,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flying_Eye_Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 3655224530435343543, guid: 1ded1b6d59aa18446ad89530911f58e6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3655224530435343562, guid: 1ded1b6d59aa18446ad89530911f58e6, type: 3}
       propertyPath: m_Target
       value: 

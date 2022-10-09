@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class PlayerAbillityTracker : MonoBehaviour
 {
-    public bool m_CanDoubleJump, m_CanDash;
+    public bool m_CanDoubleJump, m_CanDash, m_CanIncreaseSpeed;
 }

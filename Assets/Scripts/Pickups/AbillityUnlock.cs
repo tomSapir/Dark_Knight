@@ -5,7 +5,7 @@ using TMPro;
 
 public class AbillityUnlock : MonoBehaviour
 {
-    [SerializeField] private bool m_UnlockDoubleJump, m_UnlockDash;
+    [SerializeField] private bool m_UnlockDoubleJump, m_UnlockDash, m_UnlockSpeed;
     [SerializeField] private GameObject m_PickUpEffect;
     [SerializeField] private string m_UnlockMessage;
     [SerializeField] private TMP_Text m_UnlockText;
@@ -14,7 +14,10 @@ public class AbillityUnlock : MonoBehaviour
     {
         if(i_Other.tag == "Player")
         {
-            AudioManager.m_Instance.PlaySFX(13);
+            if(AudioManager.m_Instance != null)
+            {
+                AudioManager.m_Instance.PlaySFX(13);
+            }
             PlayerAbillityTracker playerAbillityTracker = i_Other.gameObject.GetComponentInParent<PlayerAbillityTracker>();
 
             if(m_UnlockDoubleJump)
@@ -25,6 +28,11 @@ public class AbillityUnlock : MonoBehaviour
             if (m_UnlockDash)
             {
                 playerAbillityTracker.m_CanDash = true;
+            }
+
+            if (m_UnlockSpeed)
+            {
+                playerAbillityTracker.m_CanIncreaseSpeed = true;
             }
 
             Instantiate(m_PickUpEffect, transform.position, transform.rotation);
