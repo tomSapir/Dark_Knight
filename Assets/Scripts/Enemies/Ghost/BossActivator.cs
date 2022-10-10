@@ -9,6 +9,8 @@ public class BossActivator : MonoBehaviour
         if(i_Other.tag == "Player")
         {
             m_BossToActivate.SetActive(true);
+
+            // After we active the boss we dont want to active again, so:
             gameObject.SetActive(false);
         }
     }

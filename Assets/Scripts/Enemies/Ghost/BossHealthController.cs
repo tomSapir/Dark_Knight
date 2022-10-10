@@ -13,7 +13,7 @@ public class BossHealthController : MonoBehaviour
 
     [SerializeField] private Slider m_BossHealthSlider;
     public int m_CurrentHealth = 30;
-    [SerializeField] private BossBattle m_BossBattle;
+    [SerializeField] private GhostBossBattle m_BossBattle;
 
     void Start()
     {

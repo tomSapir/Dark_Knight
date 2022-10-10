@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BossBattle : MonoBehaviour
+public class GhostBossBattle : MonoBehaviour
 {
     public Animator m_Animator;
     public Transform m_Boss;
