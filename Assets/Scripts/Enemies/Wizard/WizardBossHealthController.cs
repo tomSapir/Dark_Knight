@@ -13,7 +13,7 @@ public class WizardBossHealthController : MonoBehaviour
     }
 
     [SerializeField] private Slider m_BossHealthSlider;
-    [SerializeField] private int m_CurrentHealth = 60;
+    public int m_CurrentHealth = 60;
     [SerializeField] private WizardBossBattle m_TheBoss;
 
     void Start()
