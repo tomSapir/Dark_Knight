@@ -9,12 +9,12 @@ public class WizardBossBattle : MonoBehaviour
     private Transform m_Player;
     [SerializeField] private Animator m_Animator;
     [SerializeField] private float m_MoveSpeed;
-    [SerializeField] private Transform m_TheBoss;
+    public Transform m_TheBoss;
 
     [SerializeField] private Transform m_CameraPosition;
     [SerializeField] private float m_CameraMovementSpeed;
 
-    private eWizardState m_State;
+    public eWizardState m_State;
 
     [SerializeField] private int m_Treshold1, m_Treshold2;
 

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class WizardBossHealthController : MonoBehaviour
 {
     public static WizardBossHealthController m_Instance;
+    public GameObject m_GotHitEffect;
 
     void Awake()
     {
@@ -15,6 +16,7 @@ public class WizardBossHealthController : MonoBehaviour
     [SerializeField] private Slider m_BossHealthSlider;
     public int m_CurrentHealth = 60;
     [SerializeField] private WizardBossBattle m_TheBoss;
+    [SerializeField] private Animator m_Animator;
 
     void Start()
     {
@@ -24,14 +26,19 @@ public class WizardBossHealthController : MonoBehaviour
 
     public void TakeDamage(int i_DamageAmount)
     {
-        m_CurrentHealth -= i_DamageAmount;
-
-        if(m_CurrentHealth <= 0)
+        if (m_TheBoss.m_State == WizardBossBattle.eWizardState.Cooldown)
         {
-            m_CurrentHealth = 0;
-            m_TheBoss.EndBattle();
-        }
+            Instantiate(m_GotHitEffect, m_TheBoss.m_TheBoss.position, m_TheBoss.m_TheBoss.rotation);
+            m_Animator.SetTrigger("Take_Hit");
+            m_CurrentHealth -= i_DamageAmount;
 
-        m_BossHealthSlider.value = m_CurrentHealth;
+            if (m_CurrentHealth <= 0)
+            {
+                m_CurrentHealth = 0;
+                m_TheBoss.EndBattle();
+            }
+
+            m_BossHealthSlider.value = m_CurrentHealth;
+        }
     }
 }

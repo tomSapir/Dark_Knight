@@ -32,7 +32,6 @@ public class PlayerCombatController : MonoBehaviour
             }
             else if(enemy.tag == "WizardBoss")
             {
-               
                 WizardBossHealthController.m_Instance.TakeDamage(2);
             }
             else
