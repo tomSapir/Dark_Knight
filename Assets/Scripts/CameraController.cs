@@ -13,6 +13,13 @@ public class CameraController : MonoBehaviour
         m_HalfHeight = Camera.main.orthographicSize;
         m_HalfWidth = m_HalfHeight * Camera.main.aspect;
         AudioManager.m_Instance.PlayLevelMusic();
+
+        GameObject alertText = GameObject.Find("Check Point Alert Text");
+
+        if(alertText != null)
+        {
+            alertText.SetActive(false);
+        }
     }
 
     void Update()

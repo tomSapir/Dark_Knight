@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a1f266999c7794b99f762422e0a71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_GotHitEffect: {fileID: 1760938518909263655, guid: 80b35f96a6f459d45aca9453ce1d9790, type: 3}
   m_BossHealthSlider: {fileID: 879526972}
   m_CurrentHealth: 60
   m_TheBoss: {fileID: 128162171}

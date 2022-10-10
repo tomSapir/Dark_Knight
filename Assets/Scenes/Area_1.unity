@@ -48186,6 +48186,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 5.045168
       objectReference: {fileID: 0}
+    - target: {fileID: 458213958061578553, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
+      propertyPath: m_CheckPointAlert
+      value: 
+      objectReference: {fileID: 1234009974}
     - target: {fileID: 458213958243069825, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
       propertyPath: m_Animator
       value: 
