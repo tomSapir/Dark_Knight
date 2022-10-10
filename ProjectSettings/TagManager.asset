@@ -8,6 +8,8 @@ TagManager:
   - Trampoline
   - Elevator
   - Elevator Trigger
+  - WizardBoss
+  - GhostBoss
   layers:
   - Default
   - TransparentFX

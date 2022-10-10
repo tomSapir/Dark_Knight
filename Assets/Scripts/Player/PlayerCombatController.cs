@@ -26,9 +26,14 @@ public class PlayerCombatController : MonoBehaviour
         {
             GameObject.Find("Main Camera").GetComponent<Animator>().SetTrigger("Shake");
 
-            if (enemy.tag == "Boss")
+            if (enemy.tag == "GhostBoss")
             {
-                BossHealthController.m_Instance.TakeDamage(2);
+                GhostBossHealthController.m_Instance.TakeDamage(2);
+            }
+            else if(enemy.tag == "WizardBoss")
+            {
+               
+                WizardBossHealthController.m_Instance.TakeDamage(2);
             }
             else
             {

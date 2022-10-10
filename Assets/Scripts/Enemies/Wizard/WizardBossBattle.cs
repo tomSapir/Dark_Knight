@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WizardBossBattle : MonoBehaviour
@@ -18,5 +16,10 @@ public class WizardBossBattle : MonoBehaviour
     void Update()
     {
         m_Camera.transform.position = Vector3.MoveTowards(m_Camera.transform.position, m_CameraPositionToPut.position, m_CameraMovementSpeed * Time.deltaTime);
+    }
+
+    public void EndBattle()
+    {
+        gameObject.SetActive(false);
     }
 }

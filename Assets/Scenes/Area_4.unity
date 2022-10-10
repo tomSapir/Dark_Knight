@@ -217,13 +217,14 @@ GameObject:
   m_Component:
   - component: {fileID: 128162169}
   - component: {fileID: 128162171}
+  - component: {fileID: 128162172}
   m_Layer: 0
   m_Name: Boss Battle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &128162169
 Transform:
   m_ObjectHideFlags: 0
@@ -256,6 +257,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CameraPositionToPut: {fileID: 587706947}
   m_CameraMovementSpeed: 5
+--- !u!114 &128162172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128162168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a1f266999c7794b99f762422e0a71d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BossHealthSlider: {fileID: 879526972}
+  m_CurrentHealth: 60
+  m_TheBoss: {fileID: 128162171}
 --- !u!1 &210504245
 GameObject:
   m_ObjectHideFlags: 0
@@ -36085,7 +36101,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -37307,9 +37323,9 @@ GameObject:
   - component: {fileID: 1859526525}
   - component: {fileID: 1859526524}
   - component: {fileID: 1859526526}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wizard
-  m_TagString: Untagged
+  m_TagString: WizardBoss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

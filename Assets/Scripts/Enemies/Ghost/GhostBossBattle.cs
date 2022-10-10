@@ -41,7 +41,7 @@ public class GhostBossBattle : MonoBehaviour
 
         if (!m_BattleEnded)
         {
-            if (BossHealthController.m_Instance.m_CurrentHealth > m_TreshHold1) // in phase 1
+            if (GhostBossHealthController.m_Instance.m_CurrentHealth > m_TreshHold1) // in phase 1
             {
                 handleUpdatePhase1();
             }
@@ -119,7 +119,7 @@ public class GhostBossBattle : MonoBehaviour
                 m_ShotCounter -= Time.deltaTime;
                 if (m_ShotCounter <= 0)
                 {
-                    if (BossHealthController.m_Instance.m_CurrentHealth > m_TreshHold2)
+                    if (GhostBossHealthController.m_Instance.m_CurrentHealth > m_TreshHold2)
                     {
                         m_ShotCounter = m_TimeBetweenShots1;
                     }
@@ -154,7 +154,7 @@ public class GhostBossBattle : MonoBehaviour
                     }
 
                     m_Boss.gameObject.SetActive(true);
-                    if (BossHealthController.m_Instance.m_CurrentHealth > m_TreshHold2)
+                    if (GhostBossHealthController.m_Instance.m_CurrentHealth > m_TreshHold2)
                     {
                         m_ShotCounter = m_TimeBetweenShots1;
                     }
