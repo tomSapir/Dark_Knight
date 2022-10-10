@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Boss
   - Trampoline
+  - Elevator
   layers:
   - Default
   - TransparentFX
