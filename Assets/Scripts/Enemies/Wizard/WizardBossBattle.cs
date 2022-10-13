@@ -36,6 +36,7 @@ public class WizardBossBattle : MonoBehaviour
 
     void Start()
     {
+        AudioManager.m_Instance.PlayBossMusic();
         m_Player = GameObject.Find("Player").transform;
         m_Camera = FindObjectOfType<CameraController>();
         m_Camera.enabled = false;
