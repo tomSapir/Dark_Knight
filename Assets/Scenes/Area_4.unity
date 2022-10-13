@@ -343,7 +343,7 @@ MonoBehaviour:
   m_MoveSpeed: 6
   m_TheBoss: {fileID: 1859526525}
   m_CameraPosition: {fileID: 587706947}
-  m_CameraMovementSpeed: 5
+  m_CameraMovementSpeed: 7
   m_State: 0
   m_Treshold1: 20
   m_Treshold2: 40
@@ -352,6 +352,8 @@ MonoBehaviour:
   m_AmountOfAttacks: 3
   m_DistanceFromPlayerToAttack: 4
   m_WinObject: {fileID: 1379492283}
+  m_IsDead: 0
+  m_DeadAnimationTime: 2
 --- !u!114 &128162172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,12 +633,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 458213957153535243, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
+      propertyPath: m_Size.x
+      value: 6.0962844
+      objectReference: {fileID: 0}
+    - target: {fileID: 458213957153535243, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
       propertyPath: m_Size.y
       value: 4.8295074
       objectReference: {fileID: 0}
     - target: {fileID: 458213957153535243, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
+      propertyPath: m_Offset.x
+      value: -1.5583231
+      objectReference: {fileID: 0}
+    - target: {fileID: 458213957153535243, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
       propertyPath: m_Offset.y
-      value: 0.95906526
+      value: 0.9590652
       objectReference: {fileID: 0}
     - target: {fileID: 458213957153535244, guid: d3dfd8b137d8087478d026f5af0cb165, type: 3}
       propertyPath: m_LocalPosition.x
@@ -38381,7 +38391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1596685450, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
       propertyPath: m_CanIncreaseSpeed
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 696843859328629217, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
       propertyPath: m_Name

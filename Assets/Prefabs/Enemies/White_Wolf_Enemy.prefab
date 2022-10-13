@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 7377836702288923184}
   - component: {fileID: 7377836702288923190}
   - component: {fileID: 7377836702288923185}
-  m_Layer: 11
+  m_Layer: 20
   m_Name: Hot_Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -25,24 +25,10 @@ public class ElevatorHoldPlayer : MonoBehaviour
     void OnCollisionEnter2D(Collision2D i_Other)
     {
         m_PlayerOnPlatform = true;
-        /*
-        Debug.LogError(i_Other.gameObject.name);
-        if(i_Other.gameObject.tag == "Player")
-        {
-            Debug.Break();
-            i_Other.gameObject.transform.SetParent(gameObject.transform, true);
-        }
-        */
     }
 
     void OnCollisionExit2D(Collision2D i_Other)
     {
         m_PlayerOnPlatform = false;
-        /*
-        if (i_Other.gameObject.tag == "Player")
-        {
-            i_Other.gameObject.transform.parent = null;
-        }
-        */
     }
 }

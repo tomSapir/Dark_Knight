@@ -30,6 +30,10 @@ public class WizardBossBattle : MonoBehaviour
 
     [SerializeField] private GameObject m_WinObject;
 
+    public bool m_IsDead = false;
+    [SerializeField] private float m_DeadAnimationTime;
+    private float m_DeadAnimationCounter;
+
     void Start()
     {
         m_Player = GameObject.Find("Player").transform;
@@ -43,55 +47,74 @@ public class WizardBossBattle : MonoBehaviour
     {
         m_Camera.transform.position = Vector3.MoveTowards(m_Camera.transform.position, m_CameraPosition.position, m_CameraMovementSpeed * Time.deltaTime);
 
-        switch (m_State)
+        if(!m_IsDead)
         {
-            case eWizardState.Cooldown:
-                {
-                    m_CooldownCounter -= Time.deltaTime;
-                    if (m_CooldownCounter <= 0)
+            switch (m_State)
+            {
+                case eWizardState.Cooldown:
                     {
-                        findNextTarget();
-                        flipIfNeed();
-                        m_State = eWizardState.Walking;
-                    }
-
-                    break;
-                }
-            case eWizardState.Walking:
-                {
-                    m_Animator.SetBool("Walk", true);
-                    m_TheBoss.position = Vector2.MoveTowards(m_TheBoss.position, m_TargetPoint, m_MoveSpeed * Time.deltaTime);
-                    if (Mathf.Abs(m_TheBoss.position.x - m_TargetPoint.x) < .1f)
-                    {
-                        m_Animator.SetBool("Walk", false);
-                        m_State = eWizardState.Attacking;
-                        m_AttackCounter = m_AmountOfAttacks;
-                    }
-
-                    break;
-                }
-            case eWizardState.Attacking:
-                {
-                    if (m_AttackCounter > 0)
-                    {
-                        m_AttackCooldownCounter -= Time.deltaTime;
-                        if (m_AttackCooldownCounter <= 0)
+                        m_CooldownCounter -= Time.deltaTime;
+                        if (m_CooldownCounter <= 0)
                         {
-                            m_AttackCounter--;
-                            m_Animator.SetTrigger("Attack");
-                            ChangeAttackIndex();
-                            m_AttackCooldownCounter = m_AttackCooldownTime;
-                         }
-                    }
-                    else
-                    {
-                         m_State = eWizardState.Cooldown;
-                         m_CooldownCounter = m_CooldownTime;
-                    }
+                            findNextTarget();
+                            flipIfNeed();
+                            m_State = eWizardState.Walking;
+                        }
 
-                    break;
-                }
+                        break;
+                    }
+                case eWizardState.Walking:
+                    {
+                        m_Animator.SetBool("Walk", true);
+                        m_TheBoss.position = Vector2.MoveTowards(m_TheBoss.position, m_TargetPoint, m_MoveSpeed * Time.deltaTime);
+                        if (Mathf.Abs(m_TheBoss.position.x - m_TargetPoint.x) < .1f)
+                        {
+                            m_Animator.SetBool("Walk", false);
+                            m_State = eWizardState.Attacking;
+                            m_AttackCounter = m_AmountOfAttacks;
+                            flipIfNeededAfterArrivingTarget();
+                        }
+
+                        break;
+                    }
+                case eWizardState.Attacking:
+                    {
+                        if (m_AttackCounter > 0)
+                        {
+                            m_AttackCooldownCounter -= Time.deltaTime;
+                            if (m_AttackCooldownCounter <= 0)
+                            {
+                                m_AttackCounter--;
+                                m_Animator.SetTrigger("Attack");
+                                ChangeAttackIndex();
+                                m_AttackCooldownCounter = m_AttackCooldownTime;
+                            }
+                        }
+                        else
+                        {
+                            m_State = eWizardState.Cooldown;
+                            m_CooldownCounter = m_CooldownTime;
+                        }
+
+                        break;
+                    }
+            }
         }
+        else
+        {
+            m_DeadAnimationCounter -= Time.deltaTime;
+            if(m_DeadAnimationCounter < 0)
+            {
+                if(m_WinObject != null)
+                {
+                    m_WinObject.SetActive(true);
+                }
+
+                m_Camera.enabled = true;
+                gameObject.SetActive(false);
+            }
+        }
+ 
     }
 
     private void ChangeAttackIndex()
@@ -112,11 +135,11 @@ public class WizardBossBattle : MonoBehaviour
     {
         if (m_Player.transform.position.x > m_TheBoss.position.x)
         {
-            m_TargetPoint = new Vector3(m_Player.position.x - m_DistanceFromPlayerToAttack, m_TheBoss.position.y);
+            m_TargetPoint = new Vector3(m_Player.position.x - m_DistanceFromPlayerToAttack, m_TheBoss.position.y, m_TheBoss.position.z);
         }
         else
         {
-            m_TargetPoint = new Vector3(m_Player.position.x + m_DistanceFromPlayerToAttack, m_TheBoss.position.y);
+            m_TargetPoint = new Vector3(m_Player.position.x + m_DistanceFromPlayerToAttack, m_TheBoss.position.y, m_TheBoss.position.z);
         }
     }
 
@@ -132,11 +155,25 @@ public class WizardBossBattle : MonoBehaviour
         }
     }
 
+    private void flipIfNeededAfterArrivingTarget()
+    {
+        if (m_Player.transform.position.x > m_TheBoss.position.x)
+        {
+            m_TheBoss.localScale = new Vector3(Mathf.Abs(m_TheBoss.localScale.x), m_TheBoss.localScale.y, m_TheBoss.localScale.z);
+        }
+        else if (m_Player.transform.position.x < m_TheBoss.position.x)
+        {
+            m_TheBoss.localScale = new Vector3(-Mathf.Abs(m_TheBoss.localScale.x), m_TheBoss.localScale.y, m_TheBoss.localScale.z);
+        }
+    }
+
     public void EndBattle()
     {
-        m_Camera.enabled = true;
-        m_WinObject.SetActive(true);
-        gameObject.SetActive(false);
+        m_IsDead = true;
+        m_DeadAnimationCounter = m_DeadAnimationTime;
+        m_Animator.SetBool("IsDead", true);
+        m_TheBoss.GetComponent<Collider2D>().enabled = false;
+
         AudioManager.m_Instance.PlaySFX(0);
         AudioManager.m_Instance.PlayLevelMusic();
     }

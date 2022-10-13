@@ -24,6 +24,7 @@ public class PlayerCombatController : MonoBehaviour
         m_Animator.SetTrigger("Attack");
         foreach (Collider2D enemy in hitEnemies)
         {
+            Debug.Log(enemy.name);
             GameObject.Find("Main Camera").GetComponent<Animator>().SetTrigger("Shake");
 
             if (enemy.tag == "GhostBoss")

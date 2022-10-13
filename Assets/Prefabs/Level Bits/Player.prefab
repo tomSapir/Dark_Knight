@@ -90,6 +90,7 @@ MonoBehaviour:
   m_AfterImageColor: {r: 0.14117648, g: 0.6, b: 0.9529412, a: 0.69411767}
   m_TimeToWaitAfterDashing: 0.3
   m_TrampolineLaunchForce: 40
+  m_CanIncreaseSpeed: 0
 --- !u!114 &696843859328629221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 696843860050729128}
   m_AttackPoint: {fileID: 696843859665280196}
-  m_AttackRange: 1.5
+  m_AttackRange: 1
   m_EnemyLayers:
     serializedVersion: 2
     m_Bits: 34944
@@ -126,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CanDoubleJump: 0
   m_CanDash: 0
+  m_CanIncreaseSpeed: 0
 --- !u!114 &618715553
 MonoBehaviour:
   m_ObjectHideFlags: 0
