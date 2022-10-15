@@ -32,6 +32,7 @@ public class PlayerHealthController : MonoBehaviour
     {
         if(m_CurrentHealth > 0)
         {
+            AudioManager.m_Instance.PlaySFX(11);
             UIController.m_Instance.UpdateHealth(m_CurrentHealth, m_MaxHealth);
             m_CurrentHealth -= i_Damage;
             m_Animator.SetTrigger("Hurt");

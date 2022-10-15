@@ -16,7 +16,7 @@ public class AbillityUnlock : MonoBehaviour
         {
             if(AudioManager.m_Instance != null)
             {
-                AudioManager.m_Instance.PlaySFX(13);
+                AudioManager.m_Instance.PlaySFX(18);
             }
             PlayerAbillityTracker playerAbillityTracker = i_Other.gameObject.GetComponentInParent<PlayerAbillityTracker>();
 

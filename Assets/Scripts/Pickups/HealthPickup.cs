@@ -9,7 +9,7 @@ public class HealthPickup : MonoBehaviour
     {
         if(i_Other.tag == "Player")
         {
-            AudioManager.m_Instance.PlaySFX(13);
+            AudioManager.m_Instance.PlaySFX(17);
             PlayerHealthController.m_Instance.HealPlayer(m_HealthAmount);
             if(m_PickUpEffect != null)
             {

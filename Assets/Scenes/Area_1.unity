@@ -42765,23 +42765,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6594408796593929693, guid: 9edad27a6d5ce9449bef70e934e3e23f, type: 3}
   m_PrefabInstance: {fileID: 1758621670986060590}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &606719538 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7131199690389451527, guid: d6e9b9e2e805a9d488d2c5787696b4ab, type: 3}
-  m_PrefabInstance: {fileID: 815110011}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &606719540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 606719538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbde08c863de00d419655c891cae2572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &643538239
 GameObject:
   m_ObjectHideFlags: 0
@@ -42815,23 +42798,6 @@ Transform:
   m_Father: {fileID: 155432096}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &673953171 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7131199690389451527, guid: d6e9b9e2e805a9d488d2c5787696b4ab, type: 3}
-  m_PrefabInstance: {fileID: 192454671}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &673953173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 673953171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbde08c863de00d419655c891cae2572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &698187862 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7672130195069017142, guid: 4f593d21e734ef948858fe72df16e53b, type: 3}
@@ -51571,7 +51537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1979808141}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 59, y: -14.92, z: 0}
+  m_LocalPosition: {x: 62.34, y: -14.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -101061,6 +101027,10 @@ PrefabInstance:
     - target: {fileID: 6584748924714087744, guid: 3300f51f4f749aa4abc890106c44d73d, type: 3}
       propertyPath: m_Name
       value: FlyingEnemiesGenerator
+      objectReference: {fileID: 0}
+    - target: {fileID: 6584748924714087744, guid: 3300f51f4f749aa4abc890106c44d73d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6584748924714087774, guid: 3300f51f4f749aa4abc890106c44d73d, type: 3}
       propertyPath: m_RootOrder

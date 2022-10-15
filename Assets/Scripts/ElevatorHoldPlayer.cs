@@ -16,7 +16,7 @@ public class ElevatorHoldPlayer : MonoBehaviour
     {
         if(m_PlayerOnPlatform)
         {
-            m_Player.transform.position -= (m_PrevPosition - transform.position) / 2;
+            m_Player.transform.position -= (m_PrevPosition - transform.position);
         }
 
         m_PrevPosition = transform.position;
