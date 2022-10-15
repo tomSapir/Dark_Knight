@@ -44388,6 +44388,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5362721926672805551, guid: 5fbee1b7a63bcab45b069893537eb1b7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362721926672805551, guid: 5fbee1b7a63bcab45b069893537eb1b7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362721926672805551, guid: 5fbee1b7a63bcab45b069893537eb1b7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000007867813
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fbee1b7a63bcab45b069893537eb1b7, type: 3}
 --- !u!1001 &1229798002
@@ -95998,6 +96010,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 155432096}
     m_Modifications:
+    - target: {fileID: 535764581428917401, guid: 63feaee1f1de3a749839f4f7c3568ea9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 535764581428917401, guid: 63feaee1f1de3a749839f4f7c3568ea9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2947760954571452536, guid: 63feaee1f1de3a749839f4f7c3568ea9, type: 3}
       propertyPath: m_Target
       value: 
@@ -96067,6 +96087,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 155432096}
     m_Modifications:
+    - target: {fileID: 319952844658898308, guid: 16751bbea3fbd3d41b0fc350fde9c018, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 319952844658898308, guid: 16751bbea3fbd3d41b0fc350fde9c018, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6069982471080843530, guid: 16751bbea3fbd3d41b0fc350fde9c018, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -96221,6 +96249,14 @@ PrefabInstance:
       propertyPath: m_AttackDistance
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4616529700618352409, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616529700618352409, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6621635076711889733, guid: cea6d5b3c6b06b84484d4fbacd1bd11e, type: 3}
       propertyPath: m_Name
       value: Mushroom_Enemy
@@ -96282,6 +96318,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 155432096}
     m_Modifications:
+    - target: {fileID: 6001066359833001920, guid: 43974571cf112de4b8608c358d697bdc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001066359833001920, guid: 43974571cf112de4b8608c358d697bdc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7377836703304875393, guid: 43974571cf112de4b8608c358d697bdc, type: 3}
       propertyPath: m_Name
       value: White_Wolf_Enemy
