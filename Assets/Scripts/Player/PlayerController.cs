@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
     public bool m_CanIncreaseSpeed;
 
+    public ParticleSystem m_Dust;
+
     private void Start()
     {
         m_PlayerAbillityTracker = GetComponent<PlayerAbillityTracker>();
@@ -201,6 +203,11 @@ public class PlayerController : MonoBehaviour
         {
             if(m_IsOnGround || (m_CanDoubleJump && m_PlayerAbillityTracker.m_CanDoubleJump))
             {
+                if(m_IsOnGround)
+                {
+                    CreateDust();
+                }
+
                 m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, m_JumpForce);
                 m_CanDoubleJump = !m_CanDoubleJump;
             }
@@ -263,5 +270,10 @@ public class PlayerController : MonoBehaviour
         {
             m_RigidBody.velocity = Vector2.up * m_TrampolineLaunchForce;
         }
+    }
+
+    public void CreateDust()
+    {
+        m_Dust.Play();
     }
 }
