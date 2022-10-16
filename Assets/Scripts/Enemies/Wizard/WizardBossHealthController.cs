@@ -26,7 +26,7 @@ public class WizardBossHealthController : MonoBehaviour
 
     public void TakeDamage(int i_DamageAmount)
     {
-        if (m_TheBoss.m_State == WizardBossBattle.eWizardState.Cooldown)
+        if (m_TheBoss.m_CanBeDamaged)
         {
             Instantiate(m_GotHitEffect, m_TheBoss.m_TheBoss.position, m_TheBoss.m_TheBoss.rotation);
             m_Animator.SetTrigger("Take_Hit");

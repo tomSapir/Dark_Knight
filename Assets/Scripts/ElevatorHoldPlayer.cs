@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ElevatorHoldPlayer : MonoBehaviour
 {
-    private bool m_PlayerOnPlatform = false;
+    [SerializeField] private bool m_PlayerOnPlatform = false;
     private GameObject m_Player;
     private Vector3 m_PrevPosition;
 
@@ -24,11 +24,17 @@ public class ElevatorHoldPlayer : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D i_Other)
     {
-        m_PlayerOnPlatform = true;
+        if(i_Other.gameObject.tag == "Player")
+        {
+            m_PlayerOnPlatform = true;
+        }
     }
 
     void OnCollisionExit2D(Collision2D i_Other)
     {
-        m_PlayerOnPlatform = false;
+        if (i_Other.gameObject.tag == "Player")
+        {
+            m_PlayerOnPlatform = false;
+        }
     }
 }

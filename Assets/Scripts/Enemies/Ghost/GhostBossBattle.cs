@@ -4,6 +4,7 @@ public class GhostBossBattle : MonoBehaviour
 {
     public Animator m_Animator;
     public Transform m_Boss;
+    private GameObject m_Player;
 
     [SerializeField] private CameraController m_Camera;
     [SerializeField] private Transform m_CameraPosition;
@@ -28,6 +29,7 @@ public class GhostBossBattle : MonoBehaviour
 
     void Start()
     {
+        m_Player = GameObject.Find("Player");
         AudioManager.m_Instance.PlayBossMusic();
         m_Camera = FindObjectOfType<CameraController>();
         m_Camera.enabled = false;
@@ -38,6 +40,7 @@ public class GhostBossBattle : MonoBehaviour
     void Update()
     {
         m_Camera.transform.position = Vector3.MoveTowards(m_Camera.transform.position, m_CameraPosition.position, m_CameraSpeed * Time.deltaTime);
+        flipIfNeed();
 
         if (!m_BattleEnded)
         {
@@ -53,6 +56,18 @@ public class GhostBossBattle : MonoBehaviour
         else
         {
             handleUpdateOnBattleEnd();
+        }
+    }
+
+    private void flipIfNeed()
+    {
+        if (m_Boss.position.x < m_Player.transform.position.x)
+        {
+            m_Boss.localScale = new Vector3(-Mathf.Abs(m_Boss.localScale.x), m_Boss.localScale.y, m_Boss.localScale.z);
+        }
+        else
+        {
+            m_Boss.localScale = new Vector3(Mathf.Abs(m_Boss.localScale.x), m_Boss.localScale.y, m_Boss.localScale.z);
         }
     }
 

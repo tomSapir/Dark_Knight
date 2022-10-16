@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class WizardBossBattle : MonoBehaviour
@@ -34,6 +33,8 @@ public class WizardBossBattle : MonoBehaviour
     [SerializeField] private float m_DeadAnimationTime;
     private float m_DeadAnimationCounter;
 
+    public bool m_CanBeDamaged = false;
+
     void Start()
     {
         AudioManager.m_Instance.PlayBossMusic();
@@ -44,8 +45,14 @@ public class WizardBossBattle : MonoBehaviour
         m_CooldownCounter = m_CooldownTime;
     }
 
+    private void updateCanBeDamaged()
+    {
+        m_CanBeDamaged = m_State == eWizardState.Cooldown && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Wizard_Attack1") && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Wizard_Attack2");
+    }
+
     void Update()
     {
+        updateCanBeDamaged();
         m_Camera.transform.position = Vector3.MoveTowards(m_Camera.transform.position, m_CameraPosition.position, m_CameraMovementSpeed * Time.deltaTime);
 
         if(!m_IsDead)
@@ -54,14 +61,19 @@ public class WizardBossBattle : MonoBehaviour
             {
                 case eWizardState.Cooldown:
                     {
-                        m_CooldownCounter -= Time.deltaTime;
-                        if (m_CooldownCounter <= 0)
+                        if(!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Wizard_Attack1") && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Wizard_Attack2"))
                         {
-                            findNextTarget();
-                            flipIfNeed();
-                            m_State = eWizardState.Walking;
+                            m_TheBoss.GetComponent<SpriteRenderer>().color = Color.red;
+                            m_CooldownCounter -= Time.deltaTime;
+                            if (m_CooldownCounter <= 0)
+                            {
+                                findNextTarget();
+                                flipIfNeed();
+                                m_State = eWizardState.Walking;
+                                m_TheBoss.GetComponent<SpriteRenderer>().color = Color.white;
+                            }
                         }
-
+                 
                         break;
                     }
                 case eWizardState.Walking:
