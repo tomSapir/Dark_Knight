@@ -16,10 +16,10 @@ public class CameraController : MonoBehaviour
 
         GameObject alertText = GameObject.Find("Check Point Alert Text");
 
-        if(alertText != null)
+    /*    if(alertText != null)
         {
             alertText.SetActive(false);
-        }
+        }*/
     }
 
     void Update()

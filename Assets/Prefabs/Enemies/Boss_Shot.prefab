@@ -170,4 +170,4 @@ MonoBehaviour:
   m_MoveSpeed: 7
   m_RigidBody: {fileID: 6179317342502134738}
   m_DamageAmount: 5
-  m_ImpactEffect: {fileID: 0}
+  m_ImpactEffect: {fileID: 4265433937492774322, guid: b261655c5e60d214e8f496a603b7b567, type: 3}

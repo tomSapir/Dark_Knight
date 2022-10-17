@@ -52,11 +52,11 @@ public class WizardBossBattle : MonoBehaviour
 
     void Update()
     {
-        updateCanBeDamaged();
         m_Camera.transform.position = Vector3.MoveTowards(m_Camera.transform.position, m_CameraPosition.position, m_CameraMovementSpeed * Time.deltaTime);
 
         if(!m_IsDead)
         {
+            updateCanBeDamaged();
             switch (m_State)
             {
                 case eWizardState.Cooldown:
