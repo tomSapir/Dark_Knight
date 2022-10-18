@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -50,9 +51,14 @@ public class DoorController : MonoBehaviour
 
     private void saveNewLevelData()
     {
+        PlayerAbillityTracker playerAbillityTracker = GameObject.Find("Player").GetComponent<PlayerAbillityTracker>();
+
         PlayerPrefs.SetString("ContinueLevel", m_LevelToLoad);
         PlayerPrefs.SetFloat("PosX", m_ExitPoint.position.x);
         PlayerPrefs.SetFloat("PosY", m_ExitPoint.position.y);
         PlayerPrefs.SetFloat("PosZ", m_ExitPoint.position.z);
+        PlayerPrefs.SetInt("CanDash", Convert.ToInt32(playerAbillityTracker.m_CanDash));
+        PlayerPrefs.SetInt("CanDoubleJump", Convert.ToInt32(playerAbillityTracker.m_CanDoubleJump));
+        PlayerPrefs.SetInt("CanSpeed", Convert.ToInt32(playerAbillityTracker.m_CanIncreaseSpeed));
     }
 }

@@ -30,6 +30,22 @@ public class MainMenuManager : MonoBehaviour
     {
         m_PlayerAbillityTracker.gameObject.SetActive(true);
         m_PlayerAbillityTracker.transform.position = new Vector3(PlayerPrefs.GetFloat("PosX"), PlayerPrefs.GetFloat("PosY"), PlayerPrefs.GetFloat("PosZ"));
+       
+        if(PlayerPrefs.GetInt("CanDash") == 1)
+        {
+            m_PlayerAbillityTracker.m_CanDash = true;
+        }
+
+        if (PlayerPrefs.GetInt("CanDoubleJump") == 1)
+        {
+            m_PlayerAbillityTracker.m_CanDoubleJump = true;
+        }
+
+        if (PlayerPrefs.GetInt("CanSpeed") == 1)
+        {
+            m_PlayerAbillityTracker.m_CanIncreaseSpeed = true;
+        }
+
         SceneManager.LoadScene(PlayerPrefs.GetString("ContinueLevel"));
     }
 
