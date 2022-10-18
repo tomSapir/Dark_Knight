@@ -87,6 +87,7 @@ public class UIController : MonoBehaviour
         else
         {
             setSelectedButtonToNull();
+            OnClickBackFromHowToPlayBtn();
             m_PauseScreen.SetActive(false);
             Time.timeScale = 1f;
         }
