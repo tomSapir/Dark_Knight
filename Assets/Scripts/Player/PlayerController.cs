@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float m_DashSpeed;
     [SerializeField] private float m_DashTime;
-    private float m_DashCounter;
-    private bool m_IsDashing = false;
+    public float m_DashCounter;
+    public bool m_IsDashing = false;
     [SerializeField] private SpriteRenderer m_AfterImage;
     [SerializeField] private float m_AfterImageLifeTime;
     [SerializeField] private float m_TimeBetweenAfterImages;
@@ -275,5 +275,12 @@ public class PlayerController : MonoBehaviour
     public void CreateDust()
     {
         m_Dust.Play();
+    }
+
+    public void StopDashing()
+    {
+        m_IsDashing = false;
+        m_DashCounter = 0;
+        m_DashRechargeCounter = m_TimeToWaitAfterDashing;
     }
 }

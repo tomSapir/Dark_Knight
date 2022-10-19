@@ -45,7 +45,16 @@ public class DoorController : MonoBehaviour
         RespawnController.m_Instance.SetSpawn(m_ExitPoint.position);
         m_Player.CanMove = true;
         UIController.m_Instance.StartFadeFromBlack();
-        saveNewLevelData();
+
+        if(m_LevelToLoad == "End")
+        {
+            deletePlayerPrefs();
+        }
+        else
+        {
+            saveNewLevelData();
+        }
+
         SceneManager.LoadScene(m_LevelToLoad);
     }
 
@@ -60,5 +69,10 @@ public class DoorController : MonoBehaviour
         PlayerPrefs.SetInt("CanDash", Convert.ToInt32(playerAbillityTracker.m_CanDash));
         PlayerPrefs.SetInt("CanDoubleJump", Convert.ToInt32(playerAbillityTracker.m_CanDoubleJump));
         PlayerPrefs.SetInt("CanSpeed", Convert.ToInt32(playerAbillityTracker.m_CanIncreaseSpeed));
+    }
+
+    private void deletePlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }

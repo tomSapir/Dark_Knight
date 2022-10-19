@@ -8500,6 +8500,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 346847608, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596685450, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
+      propertyPath: m_CanDash
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596685450, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
+      propertyPath: m_CanDoubleJump
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596685450, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
+      propertyPath: m_CanIncreaseSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 589033919444385276, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 696843859328629217, guid: 08277e7935e70e74f9358c9e2f18353e, type: 3}
       propertyPath: m_Name
       value: Player
