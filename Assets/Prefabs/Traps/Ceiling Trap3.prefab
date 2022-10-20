@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CooldownTime: 3
+  m_TriggerName: Drop
 --- !u!1 &8257816596107537996
 GameObject:
   m_ObjectHideFlags: 0
