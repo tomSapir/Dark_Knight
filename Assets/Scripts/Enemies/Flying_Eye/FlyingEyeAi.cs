@@ -35,12 +35,12 @@ public class FlyingEyeAi : MonoBehaviour
 
     void Update()
     {
+        checkIfDied();
+
         if (m_PlayerInRange && m_CanAttack && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Take_Hit"))
         {
             StartCoroutine(AttackPlayer());
         }
-
-        checkIfDied();
     }
 
     private void checkIfDied()
