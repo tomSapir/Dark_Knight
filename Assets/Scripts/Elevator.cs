@@ -63,6 +63,4 @@ public class Elevator : MonoBehaviour
             Invoke("ChangeDirection", 3);
         }
     }
-
-    
 }

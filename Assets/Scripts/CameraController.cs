@@ -15,11 +15,6 @@ public class CameraController : MonoBehaviour
         AudioManager.m_Instance.PlayLevelMusic();
 
         GameObject alertText = GameObject.Find("Check Point Alert Text");
-
-    /*    if(alertText != null)
-        {
-            alertText.SetActive(false);
-        }*/
     }
 
     void Update()
