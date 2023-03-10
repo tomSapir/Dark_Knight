@@ -1,65 +1,63 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Elevator : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D m_RigidBody;
-    [SerializeField] private float m_Speed = 2f;
-    [SerializeField] private bool m_IsHorizontal;
-    [SerializeField] private bool m_HitTrigger;
-    [SerializeField] private bool m_IsMovingUp;
+    [SerializeField] private Rigidbody2D _RigidBody;
+    [SerializeField] private float  _Speed = 2f;
+    [SerializeField] private bool _IsHorizontal;
+    [SerializeField] private bool _HitTrigger;
+    [SerializeField] private bool _IsMovingUp;
 
     void Start()
     {
-        m_RigidBody = GetComponent<Rigidbody2D>();
+        _RigidBody = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
     {
-        if(!m_IsHorizontal) // vertical
+        if(!_IsHorizontal) // vertical
         {
             // Moving up
-            if(m_IsMovingUp && !m_HitTrigger)
+            if(_IsMovingUp && !_HitTrigger)
             {
-                m_RigidBody.velocity = Vector2.up * m_Speed;
+                _RigidBody.velocity = Vector2.up * _Speed;
             }
 
             // Moving down
-            if(!m_IsMovingUp && !m_HitTrigger)
+            if(!_IsMovingUp && !_HitTrigger)
             {
-                m_RigidBody.velocity = Vector2.down * m_Speed;
+                _RigidBody.velocity = Vector2.down * _Speed;
             }
         }
 
-        if (m_IsHorizontal) // horizontal
+        if (_IsHorizontal) // horizontal
         {
             // Moving right
-            if (m_IsMovingUp && !m_HitTrigger)
+            if (_IsMovingUp && !_HitTrigger)
             {
-                m_RigidBody.velocity = Vector2.right * m_Speed;
+                _RigidBody.velocity = Vector2.right * _Speed;
             }
 
             // Moving left
-            if (!m_IsMovingUp && !m_HitTrigger)
+            if (!_IsMovingUp && !_HitTrigger)
             {
-                m_RigidBody.velocity = Vector2.left * m_Speed;
+                _RigidBody.velocity = Vector2.left * _Speed;
             }
         }
     }
 
     void ChangeDirection()
     {
-        m_IsMovingUp = !m_IsMovingUp;
-        m_HitTrigger = false;
+        _IsMovingUp = !_IsMovingUp;
+        _HitTrigger = false;
     }
 
     private void OnTriggerEnter2D(Collider2D i_Other)
     {
         if(i_Other.gameObject.tag == "Elevator Trigger")
         {
-            m_HitTrigger = true;
-            m_RigidBody.velocity = Vector2.zero;
+            _HitTrigger = true;
+            _RigidBody.velocity = Vector2.zero;
             Invoke("ChangeDirection", 3);
         }
     }

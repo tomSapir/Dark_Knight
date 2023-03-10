@@ -2,39 +2,39 @@ using UnityEngine;
 
 public class ElevatorHoldPlayer : MonoBehaviour
 {
-    [SerializeField] private bool m_PlayerOnPlatform = false;
-    private GameObject m_Player;
-    private Vector3 m_PrevPosition;
+    [SerializeField] private bool _PlayerOnPlatform = false;
+    private GameObject _Player;
+    private Vector3 _PrevPosition;
 
     private void Start()
     {
-        m_Player = GameObject.Find("Player");
-        m_PrevPosition = transform.position;
+        _Player = GameObject.Find("Player");
+        _PrevPosition = transform.position;
     }
 
     void Update()
     {
-        if(m_PlayerOnPlatform)
-        {
-            m_Player.transform.position -= (m_PrevPosition - transform.position);
-        }
+        if(_PlayerOnPlatform)
+            _Player.transform.position -= (_PrevPosition - transform.position);
 
-        m_PrevPosition = transform.position;
+        _PrevPosition = transform.position;
     }
 
-    void OnCollisionEnter2D(Collision2D i_Other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if(i_Other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player")
         {
-            m_PlayerOnPlatform = true;
+            _PlayerOnPlatform = true;
         }
+            
     }
 
-    void OnCollisionExit2D(Collision2D i_Other)
+    void OnCollisionExit2D(Collision2D other)
     {
-        if (i_Other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            m_PlayerOnPlatform = false;
+            _PlayerOnPlatform = false;
         }
+            
     }
 }
